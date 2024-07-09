@@ -400,7 +400,7 @@
   description: uplink-emag-desc
   productEntity: Emag
   cost:
-    Telecrystal: 8
+    Telecrystal: 4 # DV was 8, can no longer emag doors
   categories:
   - UplinkUtility
 

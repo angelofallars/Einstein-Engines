@@ -90,7 +90,7 @@
         - Lethargy
   components:
     - type: StaminaCritModifier
-      critThresholdModifier: 15
+      critThresholdModifier: 10
 
 - type: trait
   id: Lethargy
@@ -112,7 +112,7 @@
         - Vigor
   components:
     - type: StaminaCritModifier
-      critThresholdModifier: -20
+      critThresholdModifier: -15
 
 - type: trait
   id: HighAdrenaline

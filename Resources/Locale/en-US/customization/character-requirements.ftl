@@ -41,6 +41,10 @@ character-clothing-preference-requirement = You must {$inverted ->
     [true] not wear
     *[other] wear
 } a [color=white]{$type}[/color]
+character-loadout-prefix-requirement = You must {$inverted ->
+    [true] not have
+    *[other] have
+} other loadout items of this type: {$loadout-prefix}
 
 
 # Whitelist

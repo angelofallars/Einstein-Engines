@@ -155,3 +155,27 @@ public sealed partial class CharacterLoadoutRequirement : CharacterRequirement
         return Loadouts.Any(l => profile.LoadoutPreferences.Contains(l.ToString()));
     }
 }
+
+/// <summary>
+///   Requires the profile to have a loadout item that starts with a prefix
+/// </summary>
+[UsedImplicitly]
+[Serializable, NetSerializable]
+public sealed partial class CharacterLoadoutPrefixRequirement : CharacterRequirement
+{
+    [DataField(required: true)]
+    public String Prefix;
+
+    public override bool IsValid(JobPrototype job, HumanoidCharacterProfile profile,
+        Dictionary<string, TimeSpan> playTimes, bool whitelisted,
+        IEntityManager entityManager, IPrototypeManager prototypeManager, IConfigurationManager configManager,
+        out FormattedMessage? reason)
+    {
+        const string color = "lightblue";
+        reason = FormattedMessage.FromMarkup(Loc.GetString("character-loadout-prefix-requirement",
+            ("inverted", Inverted),
+            ("loadout-prefix", $"[color={color}]{Prefix}[/color]")));
+
+        return profile.LoadoutPreferences.Any(lp => lp.StartsWith(Prefix));
+    }
+}

@@ -249,6 +249,32 @@
   cost: 1
   items:
     - BoxFolderGrey
+  requirements:
+    - !type:CharacterLoadoutPrefixRequirement
+       inverted: true
+       prefix: LoadoutItemBoxFolder
+
+- type: loadout
+  id: LoadoutItemBoxFolderBlack
+  category: Items
+  cost: 1
+  items:
+    - BoxFolderBlack
+  requirements:
+    - !type:CharacterLoadoutPrefixRequirement
+       inverted: true
+       prefix: LoadoutItemBoxFolder
+
+- type: loadout
+  id: LoadoutItemBoxFolderWhite
+  category: Items
+  cost: 1
+  items:
+    - BoxFolderWhite
+  requirements:
+    - !type:CharacterLoadoutPrefixRequirement
+       inverted: true
+       prefix: LoadoutItemBoxFolder
 
 - type: loadout
   id: LoadoutBookRandom

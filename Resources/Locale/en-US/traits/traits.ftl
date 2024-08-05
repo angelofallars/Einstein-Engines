@@ -65,3 +65,8 @@ trait-name-ParkourTraining = Parkour Training
 trait-description-ParkourTraining =
     Whether as a hobby, lifestyle, or professional training, you are trained in the discipline of parkour.
     You're faster with climbing, crawling, lying down, and getting up.
+
+trait-name-Sluggish = Sluggish
+trait-description-Sluggish =
+    You are slower than others, perhaps due to a physical condition, sedentary lifestyle, or age.
+    You move more slowly, and it takes longer for you to lie down and get up.

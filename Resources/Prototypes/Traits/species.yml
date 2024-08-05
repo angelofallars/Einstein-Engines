@@ -60,3 +60,22 @@
       traits:
         - Swashbuckler
         - Spearmaster
+
+- type: trait
+  id: BurningMightFists
+  category: Physical
+  points: -1
+  components:
+  - type: TraitMeleeModifier
+    soundHit:
+      path: /Audio/Weapons/Guns/Hits/energy_meat1.ogg
+      params:
+        variation: 0.250
+        volume: -10
+    damage:
+      types:
+        Heat: 7
+  requirements:
+    - !type:CharacterSpeciesRequirement
+      species:
+        - Oni

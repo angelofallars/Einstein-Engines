@@ -66,6 +66,11 @@
         - HeavyweightDrunk
   components:
     - type: DrunkenResilience
+      damage:
+        groups:
+          Brute: -0.6
+          Burn: -0.6
+
 
 - type: trait
   id: Thieving

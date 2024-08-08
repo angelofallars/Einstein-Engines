@@ -1,3 +1,4 @@
+using Content.Server.Traits.Assorted;
 using Content.Shared.Chemistry.Reagent;
 using Content.Shared.Drunk;
 using Robust.Shared.Prototypes;
@@ -18,6 +19,12 @@ public sealed partial class Drunk : ReagentEffect
     [DataField]
     public bool SlurSpeech = true;
 
+    /// <summary>
+    ///     Whether this effect comes from actual drunkenness from alcohol.
+    /// </summary>
+    [DataField]
+    public bool IsFromAlcohol = false;
+
     protected override string? ReagentEffectGuidebookText(IPrototypeManager prototype, IEntitySystemManager entSys)
         => Loc.GetString("reagent-effect-guidebook-drunk", ("chance", Probability));
 
@@ -29,5 +36,8 @@ public sealed partial class Drunk : ReagentEffect
 
         var drunkSys = args.EntityManager.EntitySysManager.GetEntitySystem<SharedDrunkSystem>();
         drunkSys.TryApplyDrunkenness(args.SolutionEntity, boozePower, SlurSpeech);
+
+        if (args.EntityManager.TryGetComponent(args.SolutionEntity, out DrunkenResilienceComponent? resilience))
+            EntitySystem.Get<DrunkenResilienceSystem>().AddDrunkenness(args.SolutionEntity, boozePower, resilience);
     }
 }

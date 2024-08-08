@@ -213,6 +213,7 @@
             Burn: -0.5  # heals 0.08 damage per tick
       - !type:Drunk
         boozePower: 2
+        isFromAlcohol: true
 
 - type: reagent
   id: Gin

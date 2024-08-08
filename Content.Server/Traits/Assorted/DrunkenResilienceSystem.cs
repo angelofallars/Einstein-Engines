@@ -1,60 +1,70 @@
-using Content.Server.Body.Components;
-using Content.Server.Body.Systems;
-using Content.Shared.Body.Components;
-using Content.Shared.Tag;
+using Content.Shared.Damage;
+using Content.Shared.FixedPoint;
+using Content.Shared.Mobs.Systems;
+using Robust.Shared.Timing;
 
 namespace Content.Server.Traits.Assorted;
 
-// TODO: make Drunken Resilience healing scale by the amount of alcohol/drunkenness
-// perhaps by using `public override void Update(float frameTime)`
 public sealed class DrunkenResilienceSystem : EntitySystem
 {
-    [Dependency] private readonly BodySystem _bodySystem = default!;
-    [Dependency] private readonly TagSystem _tagSystem = default!;
-
-    private readonly HashSet<String> MetabolizerGroups = new HashSet<String>() {
-        // Stomach
-        "Food",
-        "Drink",
-        // Heart
-        "Medicine",
-        "Poison",
-        "Narcotic",
-        // Liver
-        "Alcohol",
-    };
+    [Dependency] private readonly IGameTiming _gameTiming = default!;
+    [Dependency] private readonly DamageableSystem _damageableSys = default!;
+    [Dependency] private readonly MobStateSystem _mobStateSystem = default!;
 
     public override void Initialize()
     {
         base.Initialize();
-        SubscribeLocalEvent<DrunkenResilienceComponent, ComponentInit>(OnSpawn);
+        SubscribeLocalEvent<DrunkenResilienceComponent, MapInitEvent>(OnMapInit);
+        SubscribeLocalEvent<DrunkenResilienceComponent, EntityUnpausedEvent>(OnUnpaused);
     }
 
-    private void OnSpawn(Entity<DrunkenResilienceComponent> entity, ref ComponentInit args)
+    private void OnMapInit(Entity<DrunkenResilienceComponent> ent, ref MapInitEvent args)
     {
-        if (!TryComp<BodyComponent>(entity, out var body))
-            return;
+        ent.Comp.NextUpdate = _gameTiming.CurTime + ent.Comp.UpdateInterval;
+    }
 
-        if (!_bodySystem.TryGetBodyOrganComponents<MetabolizerComponent>(entity, out var metabolizers, body))
-            return;
+    private void OnUnpaused(Entity<DrunkenResilienceComponent> ent, ref EntityUnpausedEvent args)
+    {
+        ent.Comp.NextUpdate += args.PausedTime;
+    }
 
-        // Add the DrunkenResilience metabolizer type to Heart/Stomach/Liver and equivalents.
-        foreach (var (metabolizer, _) in metabolizers)
+    public override void Update(float frameTime)
+    {
+        base.Update(frameTime);
+
+        var query = EntityQueryEnumerator<DrunkenResilienceComponent>();
+        while (query.MoveNext(out var uid, out var comp))
         {
-            if (metabolizer.MetabolizerTypes is null
-                || metabolizer.MetabolismGroups is null)
+            if (_gameTiming.CurTime < comp.NextUpdate)
                 continue;
 
-            foreach (var metabolismGroup in metabolizer.MetabolismGroups)
+            comp.NextUpdate += comp.UpdateInterval;
+
+            if !_mobStateSystem.IsDead(uid))
+                continue;
+
+            // Heal based on their Drunkenness
+            if (comp.Drunkenness >= comp.MinHealingThreshold)
             {
-                // Kinda hacky way to check if the organ is a Heart, Stomach or Liver,
-                // or anything that would process ethanol.
-                if (MetabolizerGroups.Contains(metabolismGroup.Id))
-                {
-                    metabolizer.MetabolizerTypes.Add("DrunkenResilience");
-                    continue;
-                }
+                var percentage = comp.Drunkenness / comp.MaxDrunkenness;
+
+                var damage = comp.Damage * percentage;
+
+                _damageableSys.TryChangeDamage(uid, damage, ignoreResistances: true, interruptsDoAfters: false);
             }
+
+            // Reduce drunkenness
+            comp.Drunkenness = FixedPoint2.Max(FixedPoint2.Zero, comp.Drunkenness - comp.DrunkennessReductionAmount);
         }
+    }
+
+    public void AddDrunkenness(EntityUid uid, float boozePower, DrunkenResilienceComponent? comp = null)
+    {
+        if (!Resolve(uid, ref comp))
+            return;
+
+        var increase = FixedPoint2.New(boozePower) * comp.DrunkennessIncreaseModifier;
+
+        comp.Drunkenness = FixedPoint2.Min(comp.MaxDrunkenness, comp.Drunkenness + increase);
     }
 }

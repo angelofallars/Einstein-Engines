@@ -31,7 +31,7 @@ public sealed class PacificationSystem : EntitySystem
         SubscribeLocalEvent<PacifismDangerousAttackComponent, AttemptPacifiedAttackEvent>(OnPacifiedDangerousAttack);
     }
 
-    private bool PacifiedCanAttack(EntityUid user, EntityUid target, [NotNullWhen(false)] out string? reason)
+    public bool PacifiedCanAttack(EntityUid user, EntityUid target, [NotNullWhen(false)] out string? reason)
     {
         var ev = new AttemptPacifiedAttackEvent(user);
 

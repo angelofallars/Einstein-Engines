@@ -32,6 +32,11 @@
   points: 3
   components:
     - type: Pacified
+  requirements:
+    - !type:CharacterTraitRequirement
+      inverted: true
+      traits:
+        - Pacifist
 
 - type: trait
   id: Paracusia

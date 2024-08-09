@@ -122,3 +122,11 @@ trait-name-WeaponsGeneralist = Weapons Generalist
 trait-description-WeaponsGeneralist =
     You are a jack of all trades with melee weapons, enabling you to be versatile with your weapon arsenal.
     Your melee damage bonus for all Brute damage types (Blunt, Slash, Piercing) becomes 25%.
+
+trait-name-Monk = Way Of The Open Hand
+trait-description-Monk =
+    Your unarmed melee damage, range, and attack rate have all been improved.
+    Your unarmed attack now deals [color=yellow]Structural[/color] damage.
+    You are unable to use weapons except weapons that only deal [color=yellow]Stamina[/color] damage.
+    You are unable to use guns.
+    Wearing armor gives you a mood penalty.

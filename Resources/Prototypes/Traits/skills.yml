@@ -117,3 +117,27 @@
       inverted: true
       species:
         - Felinid
+
+- type: trait
+  id: Monk
+  category: Physical
+  points: -5
+  components:
+    - type: Monk
+      meleeModifiers:
+        coefficients:
+          Blunt: 1.50
+          Slash: 1.50
+          Piercing: 1.50
+      meleeFlatBonuses:
+        types:
+          Structural: 10
+      meleeRangeModifier: 1.5
+      attackRateModifier: 2.00
+    - type: StaminaDamageOnHit
+      damage: 10
+  requirements:
+    - !type:CharacterTraitRequirement
+      inverted: true
+      traits:
+        - Pacifist

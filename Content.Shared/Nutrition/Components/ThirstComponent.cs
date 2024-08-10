@@ -1,11 +1,12 @@
 using Content.Shared.Alert;
 using Content.Shared.Nutrition.EntitySystems;
+using Content.Shared.Traits.Assorted.Systems;
 using Robust.Shared.GameStates;
 using Robust.Shared.Serialization.TypeSerializers.Implementations.Custom;
 
 namespace Content.Shared.Nutrition.Components;
 
-[RegisterComponent, NetworkedComponent, Access(typeof(ThirstSystem))]
+[RegisterComponent, NetworkedComponent, Access(typeof(ThirstSystem), typeof(ThirstModifierSystem))]
 [AutoGenerateComponentState, AutoGenerateComponentPause]
 public sealed partial class ThirstComponent : Component
 {

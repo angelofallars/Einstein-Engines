@@ -121,3 +121,19 @@
       inverted: true
       species:
         - Felinid
+
+- type: trait
+  id: LowThirst
+  category: Physical
+  points: -1
+  components:
+    - type: ThirstModifier
+      decayRateMultiplier: 0.8
+
+- type: trait
+  id: LightEater
+  category: Physical
+  points: -2
+  components:
+    - type: HungerModifier
+      decayRateMultiplier: 0.8

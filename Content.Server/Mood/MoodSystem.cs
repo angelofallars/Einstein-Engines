@@ -1,4 +1,4 @@
-﻿using Content.Server.Chat.Managers;
+using Content.Server.Chat.Managers;
 using Content.Server.Popups;
 using Content.Shared.Alert;
 using Content.Shared.Chat;
@@ -183,8 +183,11 @@ public sealed class MoodSystem : EntitySystem
     // <summary>
     //   Recalculate the mood level of an entity by summing up all moodlets.
     // </summary>
-    private void RefreshMood(EntityUid uid, MoodComponent component)
+    public void RefreshMood(EntityUid uid, MoodComponent? component = null)
     {
+        if (!Resolve(uid, ref component))
+            return;
+
         var amount = 0f;
 
         foreach (var (_, protoId) in component.CategorisedEffects)

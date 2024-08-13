@@ -117,3 +117,16 @@
       inverted: true
       species:
         - Felinid
+
+- type: trait
+  id: Apathetic
+  category: Mental
+  points: -1
+  components:
+    - type: MoodChangeModifier
+      multiplier: 0.8
+  requirements:
+    - !type:CharacterTraitRequirement
+      inverted: true
+      traits:
+        - Oversensitive

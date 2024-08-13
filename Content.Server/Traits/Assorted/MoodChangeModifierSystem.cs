@@ -19,7 +19,7 @@ public sealed class MoodChangeModifierSystem : EntitySystem
         if (!TryComp<MoodComponent>(uid, out var mood))
             return;
 
-        // _mood.ReapplyAllEffects(uid, mood);
+        _mood.RefreshMood(uid, mood);
     }
 
     private void OnSetMood(EntityUid uid, MoodChangeModifierComponent comp, ref OnSetMoodEvent args)

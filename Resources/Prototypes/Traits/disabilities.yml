@@ -163,3 +163,16 @@
       damageModifiers:
         coefficients:
           Blunt: 1.1
+
+- type: trait
+  id: Oversensitive
+  category: Mental
+  points: 1
+  components:
+    - type: MoodChangeModifier
+      multiplier: 1.5
+  requirements:
+    - !type:CharacterTraitRequirement
+      inverted: true
+      traits:
+        - Apathetic

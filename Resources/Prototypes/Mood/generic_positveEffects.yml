@@ -1,7 +1,13 @@
-﻿- type: moodEffect
+- type: moodEffect
   id: BeingHugged
   description: "Hugs are great."
   moodChange: 3
+  timeout: 120
+
+- type: moodEffect
+  id: BeingHuggedGoodHugger
+  description: "Hugs are great."
+  moodChange: 8
   timeout: 120
 
 - type: moodEffect

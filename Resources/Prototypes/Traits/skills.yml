@@ -130,3 +130,15 @@
       inverted: true
       traits:
         - Oversensitive
+
+- type: trait
+  id: GoodHugger
+  category: Mental
+  points: -1
+  components:
+    - type: GoodHugger
+  requirements:
+    - !type:CharacterTraitRequirement
+      inverted: true
+      traits:
+        - TouchAverse

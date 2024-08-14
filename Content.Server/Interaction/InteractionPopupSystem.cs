@@ -1,5 +1,6 @@
 using Content.Server.Interaction.Components;
 using Content.Server.Popups;
+using Content.Server.Traits.Assorted;
 using Content.Shared.Bed.Sleep;
 using Content.Shared.IdentityManagement;
 using Content.Shared.Interaction;
@@ -83,8 +84,21 @@ public sealed class InteractionPopupSystem : EntitySystem
                 msg = Loc.GetString(component.InteractSuccessString, ("target", Identity.Entity(uid, EntityManager))); // Success message (localized).
                 if (component.InteractSuccessString == "hugging-success-generic")
                 {
-                    var ev = new MoodEffectEvent("BeingHugged");
-                    RaiseLocalEvent(target, ev);
+                    if (TryComp<TouchAverseComponent>(target, out var touchAverse))
+                    {
+                        var ev = new MoodEffectEvent("TouchAverseBeingHugged");
+                        RaiseLocalEvent(target, ev);
+                    }
+                    else if (TryComp<GoodHuggerComponent>(user, out var goodHugger))
+                    {
+                        var ev = new MoodEffectEvent("BeingHuggedGoodHugger");
+                        RaiseLocalEvent(target, ev);
+                    }
+                    else
+                    {
+                        var ev = new MoodEffectEvent("BeingHugged");
+                        RaiseLocalEvent(target, ev);
+                    }
                 }
                 else if (component.InteractSuccessString.Contains("petting-success-"))
                 {

@@ -7,6 +7,7 @@ using Content.Server.Forensics;
 using Content.Server.Inventory;
 using Content.Server.Nutrition.Components;
 using Content.Server.Popups;
+using Content.Server.Traits.Assorted;
 using Content.Server.Traits.Assorted.Components;
 using Content.Shared.Administration.Logs;
 using Content.Shared.Body.Components;
@@ -24,6 +25,7 @@ using Content.Shared.IdentityManagement;
 using Content.Shared.Interaction;
 using Content.Shared.Interaction.Events;
 using Content.Shared.Mobs.Systems;
+using Content.Shared.Mood;
 using Content.Shared.Nutrition;
 using Content.Shared.Nutrition.Components;
 using Content.Shared.Nutrition.EntitySystems;
@@ -383,6 +385,12 @@ public sealed class DrinkSystem : EntitySystem
             _popup.PopupEntity(
                 Loc.GetString("drink-component-force-feed-success-user", ("target", targetName)),
                 args.User, args.User);
+
+            if (TryComp<TouchAverseComponent>(args.Target.Value, out var touchAverse))
+            {
+                var ev = new MoodEffectEvent("TouchAverseForceFed");
+                RaiseLocalEvent(args.Target.Value, ev);
+            }
 
             // log successful forced drinking
             _adminLogger.Add(LogType.ForceFeed, LogImpact.Medium, $"{ToPrettyString(entity.Owner):user} forced {ToPrettyString(args.User):target} to drink {ToPrettyString(entity.Owner):drink}");

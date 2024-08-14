@@ -1,4 +1,4 @@
-﻿- type: moodEffect
+- type: moodEffect
   id: Handcuffed
   description: "I am held captive"
   moodChange: -3
@@ -49,6 +49,61 @@
   id: TraitSaturnine
   description: "Everything kind of sucks. I hate this job. "
   moodChange: -20
+
+# Touch Averse - No DoAfter
+- type: moodEffect
+  id: TouchAverseBeingHugged
+  description: "I hate feeling like I'm being squeezed!"
+  moodChange: -5
+  timeout: 120
+
+- type: moodEffect
+  id: TouchAversePulled
+  description: "I don't like being handled like that!"
+  moodChange: -5
+  timeout: 120
+  category: "TouchAversePulledOrCarried"
+
+- type: moodEffect
+  id: TouchAverseBuckled
+  description: "It felt forceful being buckled into that."
+  moodChange: -5
+  timeout: 120
+  category: "TouchAverseBuckled"
+
+- type: moodEffect
+  id: TouchAverseUnbuckled
+  description: "It felt forceful being unbuckled from that."
+  moodChange: -5
+  timeout: 120
+  category: "TouchAverseBuckled"
+
+# Touch Averse - Has DoAfter
+- type: moodEffect
+  id: TouchAverseCarried
+  description: "I don't like being handled like that!"
+  moodChange: -9
+  timeout: 120
+  category: "TouchAversePulledOrCarried"
+
+- type: moodEffect
+  id: TouchAverseForceFed
+  description: "I could've just ingested that by myself."
+  moodChange: -9
+  timeout: 120
+
+- type: moodEffect
+  id: TouchAverseForceClimbed
+  description: "TODO TouchAverseForceClimbed"
+  moodChange: -9
+  timeout: 120
+
+- type: moodEffect
+  id: TouchAverseForceSyringe
+  description: "TODO TouchAverseSyringeUse"
+  moodChange: -9
+  timeout: 120
+
 
 - type: moodEffect
   id: Dead

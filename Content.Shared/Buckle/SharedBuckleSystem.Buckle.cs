@@ -344,7 +344,7 @@ public abstract partial class SharedBuckleSystem
         // TODO user is currently set to null because if it isn't the sound fails to play in some situations, fix that
         _audio.PlayPredicted(strapComp.BuckleSound, strapUid, userUid);
 
-        var ev = new BuckleChangeEvent(strapUid, buckleUid, true);
+        var ev = new BuckleChangeEvent(strapUid, buckleUid, userUid, true);
         RaiseLocalEvent(ev.BuckledEntity, ref ev);
         RaiseLocalEvent(ev.StrapEntity, ref ev);
 
@@ -479,7 +479,7 @@ public abstract partial class SharedBuckleSystem
         if (!TerminatingOrDeleted(strapUid))
             _audio.PlayPredicted(strapComp.UnbuckleSound, strapUid, userUid);
 
-        var ev = new BuckleChangeEvent(strapUid, buckleUid, false);
+        var ev = new BuckleChangeEvent(strapUid, buckleUid, userUid, false);
         RaiseLocalEvent(buckleUid, ref ev);
         RaiseLocalEvent(strapUid, ref ev);
 

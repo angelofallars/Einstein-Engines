@@ -81,7 +81,7 @@ public sealed partial class BuckleComponent : Component
 public record struct BuckleAttemptEvent(EntityUid StrapEntity, EntityUid BuckledEntity, EntityUid UserEntity, bool Buckling, bool Cancelled = false);
 
 [ByRefEvent]
-public readonly record struct BuckleChangeEvent(EntityUid StrapEntity, EntityUid BuckledEntity, bool Buckling);
+public readonly record struct BuckleChangeEvent(EntityUid StrapEntity, EntityUid BuckledEntity, EntityUid BucklingEntity, bool Buckling);
 
 [Serializable, NetSerializable]
 public enum BuckleVisuals

@@ -5,6 +5,7 @@ using Content.Server.Resist;
 using Content.Server.Popups;
 using Content.Server.Inventory;
 using Content.Server.Nyanotrasen.Item.PseudoItem;
+using Content.Server.Traits.Assorted;
 using Content.Shared.Mobs;
 using Content.Shared.DoAfter;
 using Content.Shared.Buckle.Components;
@@ -22,6 +23,7 @@ using Content.Shared.Standing;
 using Content.Shared.ActionBlocker;
 using Content.Shared.Inventory.VirtualItem;
 using Content.Shared.Item;
+using Content.Shared.Mood;
 using Content.Shared.Throwing;
 using Content.Shared.Movement.Pulling.Components;
 using Content.Shared.Movement.Pulling.Events;
@@ -276,6 +278,12 @@ namespace Content.Server.Carrying
 
             carryingComp.Carried = carried;
             carriedComp.Carrier = carrier;
+
+            if (TryComp<TouchAverseComponent>(carried, out var touchAverse))
+            {
+                var ev = new MoodEffectEvent("TouchAverseCarried");
+                RaiseLocalEvent(carried, ev);
+            }
 
             _actionBlockerSystem.UpdateCanMove(carried);
         }

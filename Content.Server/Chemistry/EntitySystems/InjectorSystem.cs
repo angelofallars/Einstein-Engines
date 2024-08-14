@@ -1,5 +1,6 @@
 using Content.Server.Body.Components;
 using Content.Server.Body.Systems;
+using Content.Server.Traits.Assorted;
 using Content.Shared.Chemistry;
 using Content.Shared.Chemistry.Components;
 using Content.Shared.Chemistry.Components.SolutionManager;
@@ -12,6 +13,7 @@ using Content.Shared.Forensics;
 using Content.Shared.IdentityManagement;
 using Content.Shared.Interaction;
 using Content.Shared.Mobs.Components;
+using Content.Shared.Mood;
 using Content.Shared.Stacks;
 
 namespace Content.Server.Chemistry.EntitySystems;
@@ -300,6 +302,12 @@ public sealed class InjectorSystem : SharedInjectorSystem
             SetMode(injector, InjectorToggleMode.Draw);
         }
 
+        if (TryComp<TouchAverseComponent>(target, out var touchAverse))
+        {
+            var moodEvent = new MoodEffectEvent("TouchAverseForceSyringe");
+            RaiseLocalEvent(target, moodEvent);
+        }
+
         // Leave some DNA from the injectee on it
         var ev = new TransferDnaEvent { Donor = target, Recipient = injector };
         RaiseLocalEvent(target, ref ev);
@@ -312,6 +320,12 @@ public sealed class InjectorSystem : SharedInjectorSystem
                 out var solution) && solution.AvailableVolume == 0)
         {
             SetMode(injector, InjectorToggleMode.Inject);
+        }
+
+        if (TryComp<TouchAverseComponent>(target, out var touchAverse))
+        {
+            var moodEvent = new MoodEffectEvent("TouchAverseForceSyringe");
+            RaiseLocalEvent(target, moodEvent);
         }
 
         // Leave some DNA from the drawee on it

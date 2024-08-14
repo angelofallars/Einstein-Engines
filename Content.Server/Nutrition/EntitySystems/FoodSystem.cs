@@ -6,6 +6,7 @@ using Content.Server.Nutrition.Components;
 using Content.Shared.Nutrition.Components;
 using Content.Server.Popups;
 using Content.Server.Stack;
+using Content.Server.Traits.Assorted;
 using Content.Server.Traits.Assorted.Components;
 using Content.Shared.Administration.Logs;
 using Content.Shared.Body.Components;
@@ -23,6 +24,7 @@ using Content.Shared.Interaction.Components;
 using Content.Shared.Interaction.Events;
 using Content.Shared.Inventory;
 using Content.Shared.Mobs.Systems;
+using Content.Shared.Mood;
 using Content.Shared.Nutrition;
 using Content.Shared.Nutrition.EntitySystems;
 using Content.Shared.Stacks;
@@ -275,6 +277,12 @@ public sealed class FoodSystem : EntitySystem
             _popup.PopupEntity(Loc.GetString("food-system-force-feed-success", ("user", userName), ("flavors", flavors)), entity.Owner, entity.Owner);
 
             _popup.PopupEntity(Loc.GetString("food-system-force-feed-success-user", ("target", targetName)), args.User, args.User);
+
+            if (TryComp<TouchAverseComponent>(args.Target.Value, out var touchAverse))
+            {
+                var ev = new MoodEffectEvent("TouchAverseForceFed");
+                RaiseLocalEvent(args.Target.Value, ev);
+            }
 
             // log successful force feed
             _adminLogger.Add(LogType.ForceFeed, LogImpact.Medium, $"{ToPrettyString(entity.Owner):user} forced {ToPrettyString(args.User):target} to eat {ToPrettyString(entity.Owner):food}");

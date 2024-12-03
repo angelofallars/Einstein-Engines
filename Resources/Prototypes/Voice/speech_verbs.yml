@@ -173,3 +173,12 @@
   - chat-speech-verb-electricity-1
   - chat-speech-verb-electricity-2
   - chat-speech-verb-electricity-3
+
+- type: speechVerb
+  id: Tongueless
+  name: chat-speech-verb-name-tongueless
+  speechVerbStrings:
+  - chat-speech-verb-tongueless-1
+  - chat-speech-verb-tongueless-2
+  - chat-speech-verb-tongueless-3
+  - chat-speech-verb-tongueless-4

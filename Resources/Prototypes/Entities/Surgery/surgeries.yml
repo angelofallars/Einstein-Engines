@@ -435,6 +435,40 @@
     inverse: true
     reattaching: true
 
+- type: entity
+  parent: SurgeryBase
+  id: SurgeryRemoveTongue
+  name: Remove Tongue
+  categories: [ HideSpawnMenu ]
+  components:
+  - type: Surgery
+    requirement: SurgeryOpenIncision
+    steps:
+    - SurgeryStepRemoveTongue
+  - type: SurgeryPartCondition
+    part: Head
+  - type: SurgeryOrganCondition
+    organ:
+    - type: Tongue
+
+- type: entity
+  parent: SurgeryBase
+  id: SurgeryInsertTongue
+  name: Insert Tongue
+  categories: [ HideSpawnMenu ]
+  components:
+  - type: Surgery
+    requirement: SurgeryOpenIncision
+    steps:
+    - SurgeryStepInsertTongue
+    - SurgeryStepSealOrganWound
+  - type: SurgeryPartCondition
+    part: Head
+  - type: SurgeryOrganCondition
+    organ:
+    - type: Tongue
+    inverse: true
+    reattaching: true
 
 - type: entity
   parent: SurgeryBase

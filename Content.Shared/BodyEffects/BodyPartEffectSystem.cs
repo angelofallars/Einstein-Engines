@@ -48,7 +48,7 @@ public partial class BodyPartEffectSystem : EntitySystem
 
         if (partEnt.Comp.OnRemove != null)
         {
-            if (ev.Add)
+            if (!ev.Add)
                 AddComponents(ev.Body, partEnt, partEnt.Comp.OnRemove);
             else
                 RemoveComponents(ev.Body, partEnt, partEnt.Comp.OnRemove);

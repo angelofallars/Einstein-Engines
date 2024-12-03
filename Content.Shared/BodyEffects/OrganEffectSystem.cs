@@ -49,20 +49,21 @@ public partial class OrganEffectSystem : EntitySystem
         if (!_net.IsServer) // TODO: Kill this once I figure out whats breaking the Diagnostic Cybernetics.
             return;
 
-        if (organEnt.Comp.OnAdd != null)
+        if (ev.Add)
         {
-            if (ev.Add)
-                AddComponents(ev.Body, organEnt, organEnt.Comp.OnAdd);
-            else
-                RemoveComponents(ev.Body, organEnt, organEnt.Comp.OnAdd);
-        }
-
-        if (organEnt.Comp.OnRemove != null)
-        {
-            if (ev.Add)
-                AddComponents(ev.Body, organEnt, organEnt.Comp.OnRemove);
-            else
+            if (organEnt.Comp.OnRemove != null)
                 RemoveComponents(ev.Body, organEnt, organEnt.Comp.OnRemove);
+
+            if (organEnt.Comp.OnAdd != null)
+                AddComponents(ev.Body, organEnt, organEnt.Comp.OnAdd);
+        }
+        else
+        {
+            if (organEnt.Comp.OnAdd != null)
+                RemoveComponents(ev.Body, organEnt, organEnt.Comp.OnAdd);
+
+            if (organEnt.Comp.OnRemove != null)
+                AddComponents(ev.Body, organEnt, organEnt.Comp.OnRemove);
         }
     }
 

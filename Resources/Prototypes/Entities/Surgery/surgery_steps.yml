@@ -427,6 +427,20 @@
   - type: SurgeryStepEmoteEffect
 
 - type: entity
+  parent: SurgeryStepRemoveOrgan
+  id: SurgeryStepRemoveTongue
+  name: Remove tongue
+  categories: [ HideSpawnMenu ]
+  components:
+  - type: SurgeryStep
+    tool:
+    - type: Scalpel
+    duration: 5
+  - type: Sprite
+    sprite: Objects/Specific/Medical/Surgery/scalpel.rsi
+    state: scalpel
+
+- type: entity
   parent: SurgeryStepBase
   id: SurgeryStepInsertOrgan
   name: Add organ
@@ -441,6 +455,15 @@
     state: insertion
   - type: SurgeryAddOrganStep
   - type: SurgeryStepEmoteEffect
+
+- type: entity
+  parent: SurgeryStepInsertOrgan
+  id: SurgeryStepInsertTongue
+  name: Add tongue
+  categories: [ HideSpawnMenu ]
+  components:
+  - type: SurgeryStep
+    duration: 4
 
 - type: entity
   parent: SurgeryStepInsertOrgan

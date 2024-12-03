@@ -37,9 +37,15 @@
   name: vocal modulator
   description: "A vocal modulator, used to produce speech."
   components:
+  - type: Organ
+    slotId: tongue
+    onRemove:
+    - type: TonguelessAccent
+    - type: SpeechModifier
+      speechVerb: Tongueless
+  - type: Tongue
   - type: Sprite
     state: tongue
-  - type: Organ
 
 - type: entity
   id: OrganIPCEars

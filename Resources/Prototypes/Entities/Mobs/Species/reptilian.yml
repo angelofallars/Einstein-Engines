@@ -25,12 +25,6 @@
       amount: 5
   - type: Inventory
     speciesId: reptilian
-  - type: LizardAccent
-  - type: Speech
-    speechSounds: Lizard
-    speechVerb: Reptilian
-  - type: TypingIndicator
-    proto: lizard
   - type: Vocal
     sounds:
       Male: MaleReptilian

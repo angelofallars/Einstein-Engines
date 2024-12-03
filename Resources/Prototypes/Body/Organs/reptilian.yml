@@ -1,4 +1,4 @@
-﻿- type: entity
+- type: entity
   id: OrganReptilianStomach
   parent: OrganAnimalStomach
   categories: [ HideSpawnMenu ]
@@ -21,3 +21,18 @@
         reagents:
         - ReagentId: UncookedAnimalProteins
           Quantity: 5
+
+- type: entity
+  id: OrganReptilianTongue
+  parent: OrganHumanTongue
+  name: tongue
+  description: "A flessshy mussscle mossstly usssed for lying."
+  components:
+  - type: Organ
+    slotId: tongue
+    onAdd:
+    - type: LizardAccent
+    - type: SpeechModifier
+      speechSounds: Lizard
+      speechVerb: Reptilian
+      typingIndicator: lizard

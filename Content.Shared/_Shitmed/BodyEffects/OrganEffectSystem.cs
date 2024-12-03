@@ -50,7 +50,7 @@ public partial class OrganEffectSystem : EntitySystem
         if (!_net.IsServer) // TODO: Kill this once I figure out whats breaking the Diagnostic Cybernetics.
             return;
 
-        if (organEnt.Comp.OnAdd != null)
+        if (ev.Add)
         {
             if (ev.Add)
                 AddComponents(ev.Body, organEnt, organEnt.Comp.OnAdd);

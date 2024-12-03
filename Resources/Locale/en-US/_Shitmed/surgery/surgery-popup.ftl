@@ -36,6 +36,7 @@ surgery-popup-step-SurgeryStepRemoveOrgan = {$user} is removing an organ from {$
 surgery-popup-step-SurgeryStepInsertOrgan = {$user} is inserting an organ into {$target}'s {$part}!
 
 surgery-popup-procedure-SurgeryRemoveBrain-step-SurgeryStepRemoveOrgan = {$user} is removing the brain from {$target}'s {$part}!
+surgery-popup-procedure-SurgeryRemoveTongue-step-SurgeryStepRemoveTongue = {$user} is removing the tongue from {$target}'s {$part}!
 surgery-popup-procedure-SurgeryRemoveHeart-step-SurgeryStepRemoveOrgan = {$user} is removing the heart from {$target}'s {$part}!
 surgery-popup-procedure-SurgeryRemoveLiver-step-SurgeryStepRemoveOrgan = {$user} is removing the liver from {$target}'s {$part}!
 surgery-popup-procedure-SurgeryRemoveLungs-step-SurgeryStepRemoveOrgan = {$user} is removing the lungs from {$target}'s {$part}!
@@ -43,6 +44,7 @@ surgery-popup-procedure-SurgeryRemoveEyes-step-SurgeryStepRemoveOrgan = {$user} 
 surgery-popup-procedure-SurgeryRemoveStomach-step-SurgeryStepRemoveOrgan = {$user} is removing the stomach from {$target}'s {$part}!
 
 surgery-popup-procedure-SurgeryInsertBrain-step-SurgeryStepInsertOrgan = {$user} is inserting a brain into {$target}'s {$part}!
+surgery-popup-step-SurgeryStepInsertTongue = {$user} is inserting a tongue into {$target}'s {$part}!
 surgery-popup-step-SurgeryStepInsertLungs = {$user} is inserting lungs into {$target}'s {$part}!
 surgery-popup-step-SurgeryStepInsertLiver = {$user} is inserting a liver into {$target}'s {$part}!
 surgery-popup-step-SurgeryStepInsertEyes = {$user} is inserting eyes into {$target}'s {$part}!

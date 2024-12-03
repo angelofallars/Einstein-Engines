@@ -1,4 +1,4 @@
-﻿- type: body
+- type: body
   id: Slime
   name: "slime"
   root: torso
@@ -7,6 +7,8 @@
       part: HeadSlime
       connections:
       - torso
+      organs:
+        tongue: OrganHumanTongue
     torso:
       part: TorsoSlime
       connections:

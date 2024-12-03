@@ -10,6 +10,7 @@
       organs:
         brain: OrganHumanBrain
         eyes: OrganHumanEyes
+        tongue: OrganHumanTongue
     torso:
       part: TorsoHarpy
       connections:
@@ -48,4 +49,3 @@
       part: RightFootHarpy
     left foot:
       part: LeftFootHarpy
-

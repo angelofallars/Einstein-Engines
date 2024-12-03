@@ -29,6 +29,11 @@
   id: OrganShadowkinTongue
   parent: OrganHumanTongue
   components:
+  - type: Organ
+    slotId: tongue
+    onRemove:
+      - type: TonguelessAccent
+  - type: Tongue
   - type: Sprite
     sprite: Mobs/Species/Shadowkin/organs.rsi
     state: tongue

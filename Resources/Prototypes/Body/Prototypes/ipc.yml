@@ -1,4 +1,4 @@
-﻿- type: body
+- type: body
   id: IPC
   name: "ipc"
   root: torso
@@ -9,6 +9,7 @@
       - torso
       organs:
         eyes: OrganIPCEyes
+        tongue: OrganIPCTongue
     torso:
       part: TorsoIPC
       connections:

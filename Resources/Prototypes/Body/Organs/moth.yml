@@ -1,4 +1,4 @@
-﻿- type: entity
+- type: entity
   id: OrganMothStomach
   name: moth stomach
   parent: [OrganAnimalStomach, OrganHumanStomach]
@@ -26,3 +26,19 @@
     groups:
       - id: Food
       - id: Drink
+
+- type: entity
+  id: OrganMothTongue
+  parent: OrganHumanTongue
+  name: tongue
+  description: "A flezzzhy muzzzzcle mozzztly uzzzed for lying."
+  components:
+  - type: Organ
+    slotId: tongue
+    onAdd:
+    - type: MothAccent
+    - type: ZombieAccentOverride
+      accent: zombieMoth
+    - type: SpeechModifier
+      speechVerb: Moth
+      typingIndicator: moth

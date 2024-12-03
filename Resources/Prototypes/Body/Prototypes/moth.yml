@@ -1,4 +1,4 @@
-﻿- type: body
+- type: body
   id: Moth
   name: "moth"
   root: torso
@@ -10,6 +10,7 @@
       organs:
         brain: OrganHumanBrain
         eyes: OrganHumanEyes
+        tongue: OrganMothTongue
     torso:
       part: TorsoMoth
       organs:

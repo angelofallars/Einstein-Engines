@@ -1,12 +1,14 @@
 using Content.Shared.Chat.TypingIndicator;
 using Content.Shared.Speech;
 using Content.Shared.Popups;
+using Robust.Shared.Timing;
 
 namespace Content.Shared.Speech.EntitySystems;
 
 public sealed partial class SpeechModifierSystem : EntitySystem
 {
     [Dependency] private readonly SharedPopupSystem _popup = default!;
+    [Dependency] private readonly IGameTiming _timing = default!;
 
     public override void Initialize()
     {
@@ -18,6 +20,9 @@ public sealed partial class SpeechModifierSystem : EntitySystem
 
     private void OnStartup(EntityUid uid, SpeechModifierComponent component, ComponentStartup args)
     {
+        if (!_timing.IsFirstTimePredicted)
+            return;
+
         if (TryComp<SpeechComponent>(uid, out var speech))
         {
             component.OriginalSpeechSounds = speech.SpeechSounds;
@@ -40,9 +45,8 @@ public sealed partial class SpeechModifierSystem : EntitySystem
 
         component.OriginalTypingIndicator = typing.Prototype;
 
-        _popup.PopupClient($"component.TypingIndicator = {component.TypingIndicator} && typing.Prototype = {typing.Prototype}", uid, uid);
-
         typing.Prototype = component.TypingIndicator ?? typing.Prototype;
+        Dirty(uid, typing);
     }
 
     private void OnRemove(EntityUid uid, SpeechModifierComponent component, ComponentRemove args)
@@ -58,6 +62,9 @@ public sealed partial class SpeechModifierSystem : EntitySystem
 
         if (TryComp<TypingIndicatorComponent>(uid, out var typing) &&
             component.OriginalTypingIndicator is string originalTypingPrototype)
+        {
             typing.Prototype = originalTypingPrototype;
+            Dirty(uid, typing);
+        }
     }
 }

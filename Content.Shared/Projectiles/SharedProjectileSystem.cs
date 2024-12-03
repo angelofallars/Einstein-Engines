@@ -5,6 +5,7 @@ using Content.Shared.DoAfter;
 using Content.Shared.Hands.EntitySystems;
 using Content.Shared.Interaction;
 using Content.Shared.Mobs.Components;
+using Content.Shared.Popups;
 using Content.Shared.Throwing;
 using Robust.Shared.Audio.Systems;
 using Robust.Shared.Map;
@@ -15,6 +16,7 @@ using Robust.Shared.Physics.Dynamics;
 using Robust.Shared.Physics.Events;
 using Robust.Shared.Physics.Systems;
 using Robust.Shared.Serialization;
+using Robust.Shared.Timing;
 
 namespace Content.Shared.Projectiles;
 
@@ -28,6 +30,8 @@ public abstract partial class SharedProjectileSystem : EntitySystem
     [Dependency] private readonly SharedHandsSystem _hands = default!;
     [Dependency] private readonly SharedPhysicsSystem _physics = default!;
     [Dependency] private readonly SharedTransformSystem _transform = default!;
+    [Dependency] private readonly IGameTiming _timing = default!;
+    [Dependency] private readonly SharedPopupSystem _popup = default!;
 
     public override void Initialize()
     {
@@ -41,6 +45,26 @@ public abstract partial class SharedProjectileSystem : EntitySystem
         SubscribeLocalEvent<EmbeddableProjectileComponent, AttemptPacifiedThrowEvent>(OnAttemptPacifiedThrow);
     }
 
+    // TODO: rename Embedded to Target in every context
+    public override void Update(float frameTime)
+    {
+        base.Update(frameTime);
+
+        var query = EntityQueryEnumerator<EmbeddableProjectileComponent>();
+        var curTime = _timing.CurTime;
+
+        while (query.MoveNext(out var uid, out var comp))
+        {
+            if (comp.AutoRemoveTime == null || comp.AutoRemoveTime > curTime)
+                continue;
+
+            if (comp.Target is {} targetUid)
+                _popup.PopupClient(Loc.GetString("throwing-embed-falloff", ("item", uid)), targetUid, targetUid);
+
+            RemoveEmbed(uid, comp);
+        }
+    }
+
     private void OnEmbedActivate(EntityUid uid, EmbeddableProjectileComponent component, ActivateInWorldEvent args)
     {
         // Nuh uh
@@ -52,6 +76,10 @@ public abstract partial class SharedProjectileSystem : EntitySystem
 
         args.Handled = true;
 
+        if (component.Target is {} targetUid)
+            _popup.PopupClient(Loc.GetString("throwing-embed-remove-alert-owner", ("item", uid), ("other", args.User)),
+                args.User, targetUid);
+
         _doAfter.TryStartDoAfter(new DoAfterArgs(EntityManager, args.User, component.RemovalTime.Value,
             new RemoveEmbeddedProjectileEvent(), eventTarget: uid, target: uid)
         {
@@ -62,8 +90,22 @@ public abstract partial class SharedProjectileSystem : EntitySystem
     private void OnEmbedRemove(EntityUid uid, EmbeddableProjectileComponent component, RemoveEmbeddedProjectileEvent args)
     {
         // Whacky prediction issues.
-        if (args.Cancelled || _netManager.IsClient)
+        if (args.Cancelled)
             return;
+
+        RemoveEmbed(uid, component, args.User);
+    }
+
+    private void RemoveEmbed(EntityUid uid, EmbeddableProjectileComponent component, EntityUid? remover = null)
+    {
+        component.AutoRemoveTime = null;
+        component.Target = null;
+
+        if (_netManager.IsClient)
+            return;
+
+        var ev = new RemoveEmbedEvent(remover);
+        RaiseLocalEvent(uid, ref ev);
 
         if (component.DeleteOnRemove)
         {
@@ -85,17 +127,19 @@ public abstract partial class SharedProjectileSystem : EntitySystem
         }
 
         // Land it just coz uhhh yeah
-        var landEv = new LandEvent(args.User, true);
+        var landEv = new LandEvent(remover, true);
         RaiseLocalEvent(uid, ref landEv);
         _physics.WakeBody(uid, body: physics);
 
         // try place it in the user's hand
-        _hands.TryPickupAnyHand(args.User, uid);
+        if (remover is {} removerUid)
+            _hands.TryPickupAnyHand(removerUid, uid);
     }
 
     private void OnEmbedThrowDoHit(EntityUid uid, EmbeddableProjectileComponent component, ThrowDoHitEvent args)
     {
-        if (!component.EmbedOnThrow)
+        if (!component.EmbedOnThrow ||
+            HasComp<ThrownItemImmuneComponent>(args.Target))
             return;
 
         Embed(uid, args.Target, null, component);
@@ -130,6 +174,11 @@ public abstract partial class SharedProjectileSystem : EntitySystem
         _audio.PlayPredicted(component.Sound, uid, null);
         var ev = new EmbedEvent(user, target);
         RaiseLocalEvent(uid, ref ev);
+
+        if (component.AutoRemoveDuration != 0)
+            component.AutoRemoveTime = _timing.CurTime + TimeSpan.FromSeconds(component.AutoRemoveDuration);
+
+        component.Target = target;
     }
 
     private void PreventCollision(EntityUid uid, ProjectileComponent component, ref PreventCollideEvent args)
@@ -149,18 +198,18 @@ public abstract partial class SharedProjectileSystem : EntitySystem
         Dirty(id, component);
     }
 
-    [Serializable, NetSerializable]
-    private sealed partial class RemoveEmbeddedProjectileEvent : DoAfterEvent
-    {
-        public override DoAfterEvent Clone() => this;
-    }
-
     /// <summary>
     /// Prevent players with the Pacified status effect from throwing embeddable projectiles.
     /// </summary>
     private void OnAttemptPacifiedThrow(Entity<EmbeddableProjectileComponent> ent, ref AttemptPacifiedThrowEvent args)
     {
         args.Cancel("pacified-cannot-throw-embed");
+    }
+
+    [Serializable, NetSerializable]
+    private sealed partial class RemoveEmbeddedProjectileEvent : DoAfterEvent
+    {
+        public override DoAfterEvent Clone() => this;
     }
 }
 

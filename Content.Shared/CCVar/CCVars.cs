@@ -2768,7 +2768,7 @@ namespace Content.Shared.CCVar
         #region Surgery
 
         public static readonly CVarDef<bool> CanOperateOnSelf =
-            CVarDef.Create("surgery.can_operate_on_self", true, CVar.SERVERONLY);
+            CVarDef.Create("surgery.can_operate_on_self", false, CVar.SERVERONLY);
 
         #endregion
         /// <summary>

@@ -95,6 +95,9 @@ trait-description-NormalVisionHarpy =
     Your eyes have been modified by means of advanced medicine to see in the standard colors of Red, Green, and Blue.
     You do not have the usual vision anomaly that your species may possess.
 
+trait-name-SkeletonAccent = Skeleton Accent
+trait-description-SkeletonAccent = You have a humerus skeleton accent that will rattle others to the bone!
+
 trait-name-NormalVision = Trichromat Modification
 trait-description-NormalVision =
     Your eyes have been modified by means of advanced medicine to see in the standard colors of Red, Green, and Blue.
@@ -144,29 +147,29 @@ trait-description-GlassJaw =
 trait-name-HighAdrenaline = High Adrenaline
 trait-description-HighAdrenaline =
     Whether by natural causes, genetic or bionic augmentation, you have a more potent adrenal gland.
-    When injured, your melee attacks deal up to 10% more damage, in addition to the natural bonuses from adrenaline.
-    The standard adrenaline bonuses to melee damage are up to a 20% increase.
+    When injured, your melee/throwing attacks deal up to 10% more damage, in addition to the natural bonuses from adrenaline.
+    The standard adrenaline bonuses to melee/throwing damage are up to a 20% increase.
 
 trait-name-AdrenalDysfunction = Adrenal Dysfunction
 trait-description-AdrenalDysfunction =
     Your adrenal gland is completely nonfunctional, or potentially missing outright.
-    Your melee attacks do not benefit from Adrenaline when injured.
-    The standard adrenaline bonuses to melee damage are up to a 20% increase.
+    Your melee/throwing attacks do not benefit from Adrenaline when injured.
+    The standard adrenaline bonuses to melee/throwing damage are up to a 20% increase.
 
 trait-name-Masochism = Masochism
 trait-description-Masochism =
     Deriving enjoyment from your own pain, you are not as inhibited by it as others.
-    You ignore the first 10% of stamina damage penalties to your melee attacks.
+    You ignore the first 10% of stamina damage penalties to your melee/throwing attacks.
 
 trait-name-LowPainTolerance = Low Pain Tolerance
 trait-description-LowPainTolerance =
     Your tolerance for pain is far below average, and its effects are more inhibiting.
-    Your melee damage is penalized by up to an additional 15% when taking stamina damage.
+    Your melee/throwing damage is penalized by up to an additional 15% when taking stamina damage.
 
 trait-name-MartialArtist = Martial Artist
 trait-description-MartialArtist =
     You have received formal training in unarmed combat, whether with Fists, Feet, or Claws.
-    Your unarmed melee attacks have a small range increase, and deal 50% more damage.
+    Your unarmed melee attacks have a small range increase, and deal 50% more [color=red]Brute[/color] damage.
     This does not apply to any form of armed melee, only the weapons you were naturally born with.
 
 trait-name-Vigor = Vigor
@@ -183,6 +186,18 @@ trait-name-SignLanguage = Sign Language
 trait-description-SignLanguage =
     You can understand and use Tau-Ceti Basic Sign Language (TCB-SL).
     If you are mute for any reason, you can still communicate with sign language.
+
+trait-name-PlasmafirePunch = Plasmafire Punch
+trait-description-PlasmafirePunch =
+    Infuse your fists with plasma dust that combusts upon a burst of force.
+    Your unarmed attack deals [color=gray]6[/color] [color=orange]Heat[/color] and [color=gray]1.5[/color] [color=red]Blunt[/color] damage.
+    However, each combustion deals [color=gray]1.2[/color] [color=orange]Heat[/color] damage to your hands.
+
+trait-name-ToxoplasmicPunch = Toxoplasmic Punch
+trait-description-ToxoplasmicPunch =
+    Infuse your fists with sharp plasma shards that poison on contact.
+    Your unarmed attack deals [color=gray]6.5[/color] [color=green]Poison[/color] and [color=gray]1.5[/color] [color=red]Slash[/color] damage.
+    However, the shards cut into your hands and each attack deals [color=gray]1.5[/color] [color=red]Slash[/color] damage to your hands.
 
 trait-name-SolCommon = Sol Common
 trait-description-SolCommon =

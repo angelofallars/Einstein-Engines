@@ -361,6 +361,7 @@
         - Human
         - Oni
         - SlimePerson
+        - Plasmaman
     - !type:CharacterTraitRequirement
       inverted: true
       traits:
@@ -415,6 +416,74 @@
           damage:
             types:
               Blunt: 6
+
+- type: trait
+  id: PlasmafirePunch
+  category: Physical
+  points: -3
+  requirements:
+    - !type:CharacterSpeciesRequirement
+      species:
+        - Plasmaman
+    - !type:CharacterTraitRequirement
+      inverted: true
+      traits:
+        - Claws
+        - Talons
+        - ToxoplasmicPunch
+  functions:
+    - !type:TraitReplaceComponent
+      components:
+        - type: MeleeWeapon
+          soundHit:
+            collection: Punch
+          angle: 30
+          animation: WeaponArcFist
+          damage:
+            types:
+              Heat: 6
+              Blunt: 1.5
+    - !type:TraitAddComponent
+      components:
+        - type: DamageOnHit
+          damage:
+            types:
+              Heat: 1.2
+          targetParts: [ RightHand, LeftHand ]
+
+- type: trait
+  id: ToxoplasmicPunch
+  category: Physical
+  points: -5
+  requirements:
+    - !type:CharacterSpeciesRequirement
+      species:
+        - Plasmaman
+    - !type:CharacterTraitRequirement
+      inverted: true
+      traits:
+        - Claws
+        - Talons
+        - PlasmafirePunch
+  functions:
+    - !type:TraitReplaceComponent
+      components:
+        - type: MeleeWeapon
+          soundHit:
+            collection: Punch
+          angle: 30
+          animation: WeaponArcFist
+          damage:
+            types:
+              Poison: 6.5
+              Slash: 1.5
+    - !type:TraitAddComponent
+      components:
+        - type: DamageOnHit
+          damage:
+            types:
+              Slash: 1.5
+          targetParts: [ RightHand, LeftHand ]
 
 - type: trait
   id: Spinarette
@@ -669,3 +738,43 @@
           - Biological
           - Inorganic
           - Silicon
+
+- type: trait
+  id: Redshirt
+  category: Physical
+  points: 8
+  requirements:
+    - !type:CharacterJobRequirement
+      inverted: true
+      jobs:
+        - Borg
+        - MedicalBorg
+    - !type:CharacterSpeciesRequirement
+      inverted: true
+      species:
+        - IPC
+  functions:
+    - !type:TraitReplaceComponent
+      components:
+        - type: DeadModifier
+          deadThresholdModifier: -100
+
+- type: trait
+  id: BrittleBoneDisease
+  category: Physical
+  points: 10
+  requirements:
+    - !type:CharacterJobRequirement
+      inverted: true
+      jobs:
+        - Borg
+        - MedicalBorg
+    - !type:CharacterSpeciesRequirement
+      inverted: true
+      species:
+        - IPC
+  functions:
+    - !type:TraitReplaceComponent
+      components:
+        - type: CritModifier
+          critThresholdModifier: -50

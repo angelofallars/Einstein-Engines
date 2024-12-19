@@ -115,6 +115,7 @@
     coefficient: 0.01
   - type: FireProtection
     reduction: 0.75 # almost perfectly sealed, atmos firesuit is better
+  - type: IgniteFromGasImmunity
   - type: ClothingSpeedModifier
     walkModifier: 0.4
     sprintModifier: 0.6
@@ -141,6 +142,7 @@
     - WhitelistChameleon
     - HidesHarpyWings #DeltaV: Used by harpies to help render their hardsuit sprites
     - FullBodyOuter
+    - PlasmamanSafe
   - type: Clothing
     equipDelay: 2.5 # Hardsuits are heavy and take a while to put on/off.
     unequipDelay: 2.5
@@ -151,6 +153,13 @@
     coefficient: 0.75 # 25%
   - type: ClothingRequiredStepTriggerImmune
     slots: WITHOUT_POCKET
+  - type: DamageOtherOnHit
+    damage:
+      types:
+        Blunt: 19
+    staminaCost: 44
+    soundHit:
+      collection: MetalThud
 
 - type: entity
   abstract: true
@@ -163,6 +172,7 @@
     lowPressureMultiplier: 1000
   - type: TemperatureProtection
     coefficient: 0.01 # Not complete protection from fire
+  - type: IgniteFromGasImmunity
   - type: ClothingSpeedModifier
     walkModifier: 0.8
     sprintModifier: 0.8
@@ -172,6 +182,7 @@
   - type: Tag
     tags:
     - HidesHarpyWings #DeltaV: Used by harpies to help render their hardsuit sprites
+    - PlasmamanSafe
   - type: Clothing
     equipDelay: 1.25 # Softsuits are easier to put on and off
     unequipDelay: 1

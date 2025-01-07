@@ -90,12 +90,11 @@
 
 - type: entity
   id: OrganHumanTongue
-  parent: BaseHumanOrgan
+  parent: [BaseHumanOrgan, BaseOrganTongue] # Shitmed Change - Inherit from BaseOrganTongue
   name: tongue
   description: "A fleshy muscle mostly used for lying."
   components:
   - type: Organ # Shitmed Change
-    slotId: tongue
     onAdd:
     - type: SpeechModifier
       speechSounds: Alto
@@ -106,10 +105,6 @@
         Unsexed: MaleHuman
     - type: TypingIndicatorModifier
       proto: default
-    onRemove:
-    - type: TonguelessAccent
-    - type: SpeechModifier
-      speechVerb: Tongueless
   - type: Tongue # Shitmed Change
   - type: Sprite
     state: tongue

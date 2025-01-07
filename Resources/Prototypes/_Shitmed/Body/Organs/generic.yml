@@ -29,7 +29,13 @@
   - type: Organ
     slotId: tongue
     onRemove:
-    - type: TonguelessAccent
     - type: SpeechModifier
+      speechSounds: Tongueless
       speechVerb: Tongueless
+    - type: VocalModifier
+      sounds:
+        Male: Tongueless
+        Female: Tongueless
+        Unsexed: Tongueless
+    - type: TonguelessAccent
   - type: Tongue

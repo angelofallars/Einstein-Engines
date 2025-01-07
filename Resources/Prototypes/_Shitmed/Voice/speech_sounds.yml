@@ -1,0 +1,9 @@
+- type: speechSounds
+  id: Tongueless
+  variation: 0.125
+  saySound:
+    collection: TonguelessTalk
+  askSound:
+    collection: TonguelessTalk
+  exclaimSound:
+    collection: TonguelessTalk

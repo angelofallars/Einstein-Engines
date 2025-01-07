@@ -1,0 +1,6 @@
+- type: soundCollection
+  id: TonguelessTalk
+  files:
+  - /Audio/_Shitmed/Voice/Talk/tongueless1.ogg
+  - /Audio/_Shitmed/Voice/Talk/tongueless2.ogg
+  - /Audio/_Shitmed/Voice/Talk/tongueless3.ogg

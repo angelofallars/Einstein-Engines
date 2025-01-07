@@ -163,7 +163,7 @@
 
 - type: entity
   id: OrganArachnidTongue
-  parent: [BaseArachnidOrgan, BaseOrganTongue] # Shitmed Change - inherit from BaseOrganTongue
+  parent: [BaseArachnidOrgan, BaseOrganTongue] # Shitmed Change - Inherit from BaseOrganTongue
   name: arachnid tongue # Shitmed Change
   description: "A fleshy muscle mostly used for lying."
   components:

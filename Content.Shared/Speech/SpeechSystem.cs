@@ -47,10 +47,12 @@ namespace Content.Shared.Speech
                 return;
 
             component.OriginalSpeechSounds = speech.SpeechSounds;
-            speech.SpeechSounds = component.SpeechSounds;
+            if (component.SpeechSounds is {} speechSounds)
+                speech.SpeechSounds = speechSounds;
 
             component.OriginalSpeechVerb = speech.SpeechVerb;
-            speech.SpeechVerb = component.SpeechVerb;
+            if (component.SpeechVerb is {} speechVerb)
+                speech.SpeechVerb = speechVerb;
 
             component.OriginalAllowedEmotes = speech.AllowedEmotes;
             speech.AllowedEmotes = component.AllowedEmotes;

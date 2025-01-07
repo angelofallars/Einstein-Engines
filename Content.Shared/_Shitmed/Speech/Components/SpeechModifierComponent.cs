@@ -21,7 +21,7 @@ public sealed partial class SpeechModifierComponent : Component
     ///     What speech verb prototype should be used by default for displaying this entity's messages?
     /// </summary>
     [DataField, AutoNetworkedField]
-    public ProtoId<SpeechVerbPrototype> SpeechVerb = "Default";
+    public ProtoId<SpeechVerbPrototype>? SpeechVerb = null;
 
     [DataField, AutoNetworkedField]
     public ProtoId<SpeechVerbPrototype>? OriginalSpeechVerb = null;

@@ -39,20 +39,21 @@ public partial class BodyPartEffectSystem : EntitySystem
     private void OnPartComponentsModify(Entity<BodyPartComponent> partEnt,
         ref BodyPartComponentsModifyEvent ev)
     {
-        if (partEnt.Comp.OnAdd != null)
+        if (ev.Add)
         {
-            if (ev.Add)
-                AddComponents(ev.Body, partEnt, partEnt.Comp.OnAdd);
-            else
-                RemoveComponents(ev.Body, partEnt, partEnt.Comp.OnAdd);
-        }
-
-        if (partEnt.Comp.OnRemove != null)
-        {
-            if (!ev.Add)
-                AddComponents(ev.Body, partEnt, partEnt.Comp.OnRemove);
-            else
+            if (partEnt.Comp.OnRemove != null)
                 RemoveComponents(ev.Body, partEnt, partEnt.Comp.OnRemove);
+
+            if (partEnt.Comp.OnAdd != null)
+                AddComponents(ev.Body, partEnt, partEnt.Comp.OnAdd);
+        }
+        else
+        {
+            if (partEnt.Comp.OnAdd != null)
+                RemoveComponents(ev.Body, partEnt, partEnt.Comp.OnAdd);
+
+            if (partEnt.Comp.OnRemove != null)
+                AddComponents(ev.Body, partEnt, partEnt.Comp.OnRemove);
         }
 
         Dirty(partEnt, partEnt.Comp);

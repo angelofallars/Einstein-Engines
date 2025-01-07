@@ -37,6 +37,18 @@
   name: vocal modulator
   description: "A vocal modulator, used to produce speech."
   components:
+  - type: Organ # Shitmed Change
+    onAdd:
+    - type: SpeechModifier
+      speechSounds: Pai
+    - type: VocalModifier
+      wilhelm: "/Audio/Voice/IPC/wilhelm.ogg"
+      sounds:
+        Male: UnisexIPC
+        Female: UnisexIPC
+        Unsexed: UnisexIPC
+    - type: TypingIndicatorModifier
+      proto: robot
   - type: Sprite
     state: tongue
 

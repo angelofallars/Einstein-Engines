@@ -33,8 +33,11 @@ public abstract class SharedTypingIndicatorSystem : EntitySystem
 
         component.OriginalTypingIndicator = indicator.Prototype;
 
-        if (component.TypingIndicator != null)
-            indicator.Prototype = component.TypingIndicator;
+        if (component.TypingIndicator == null)
+            return;
+
+        indicator.Prototype = component.TypingIndicator;
+        Dirty(uid, indicator);
     }
 
     private void OnModifierShutdown(EntityUid uid, TypingIndicatorModifierComponent component, ComponentShutdown args)
@@ -44,6 +47,7 @@ public abstract class SharedTypingIndicatorSystem : EntitySystem
             return;
 
         indicator.Prototype = component.OriginalTypingIndicator;
+        Dirty(uid, indicator);
     }
     // Shitmed Change End
 

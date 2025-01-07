@@ -1,15 +1,21 @@
 - type: entity
   id: OrganMothTongue
   parent: OrganHumanTongue
-  name: tongue
+  name: moth tongue
   description: "A flezzzhy muzzzzcle mozzztly uzzzed for lying."
   components:
   - type: Organ
     onAdd:
+    - type: SpeechModifier
+      speechVerb: Moth
+      allowedEmotes: ['Chitter', 'Squeak']
+    - type: VocalModifier
+      sounds:
+        Male: UnisexMoth
+        Female: UnisexMoth
+        Unsexed: UnisexMoth
+    - type: TypingIndicatorModifier
+      proto: moth
     - type: MothAccent
     - type: ZombieAccentOverride
       accent: zombieMoth
-    - type: SpeechModifier
-      speechVerb: Moth
-    - type: TypingIndicatorModifier
-      proto: moth

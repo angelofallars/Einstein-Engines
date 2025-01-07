@@ -1,0 +1,15 @@
+- type: entity
+  id: OrganVulpkaninTongue
+  parent: OrganHumanTongue
+  name: vulpkanin tongue
+  components:
+  - type: Organ
+    onAdd:
+    - type: SpeechModifier
+      speechSounds: Vulpkanin
+      speechVerb: Vulpkanin
+    - type: VocalModifier
+      sounds:
+        Male: MaleVulpkanin
+        Female: FemaleVulpkanin
+        Unsexed: MaleVulpkanin

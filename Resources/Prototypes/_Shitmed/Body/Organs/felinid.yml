@@ -1,4 +1,27 @@
 - type: entity
+  id: OrganFelinidTongue
+  parent: OrganHumanTongue
+  name: cat tongue
+  description: Cat got your tongue, or you got cat tongue?
+  components:
+  - type: Organ
+    onAdd:
+    - type: SpeechModifier
+      speechSounds: Alto
+      speechVerb: Felinid
+    - type: VocalModifier
+      wilhelm: "/Audio/Nyanotrasen/Voice/Felinid/cat_wilhelm.ogg"
+      sounds:
+        Male: MaleFelinid
+        Female: FemaleFelinid
+        Unsexed: MaleFelinid
+    - type: TypingIndicatorModifier
+      proto: felinid
+    # TODO: add/remove FelinidEmotes tag
+    # tagOnAdd:
+    # - FelinidEmotes
+
+- type: entity
   id: OrganFelinidEars
   parent: OrganHumanEars
   name: cat ears

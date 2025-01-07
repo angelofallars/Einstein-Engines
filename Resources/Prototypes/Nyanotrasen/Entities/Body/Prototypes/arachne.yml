@@ -10,7 +10,7 @@
       organs:
         brain: OrganHumanBrain
         eyes: OrganHumanEyes
-        tongue: OrganHumanTongue # Shitmed Change
+        tongue: OrganArachneTongue # Shitmed Change
     torso:
       part: TorsoHuman
       connections:

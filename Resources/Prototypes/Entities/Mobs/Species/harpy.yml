@@ -5,8 +5,8 @@
   id: MobHarpyBase
   abstract: true
   components:
-  - type: Singer
-    proto: HarpySinger
+  # - type: Singer # Shitmed Change - harpy singing live in OrganHarpyTongue instead
+  #   proto: HarpySinger
   - type: Sprite
     scale: 0.9, 0.9
     layers:

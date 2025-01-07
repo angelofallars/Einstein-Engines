@@ -28,7 +28,19 @@
 - type: entity
   id: OrganShadowkinTongue
   parent: OrganHumanTongue
+  name: shadowkin tongue # Shitmed Change
   components:
+  - type: Organ # Shitmed Change
+    onAdd:
+    - type: SpeechModifier
+      allowedEmotes: ['Mars', 'Wurble']
+    - type: VocalModifier
+      sounds:
+        Male: MaleShadowkin
+        Female: FemaleShadowkin
+        Unsexed: MaleShadowkin
+    - type: TypingIndicatorModifier
+      proto: alien
   - type: Sprite
     sprite: Mobs/Species/Shadowkin/organs.rsi
     state: tongue

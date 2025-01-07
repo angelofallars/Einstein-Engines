@@ -48,13 +48,13 @@ public sealed partial class OrganComponent : Component, ISurgeryToolComponent //
     /// <summary>
     ///     When attached, the organ will ensure these components on the entity, and delete them on removal.
     /// </summary>
-    [DataField]
+    [DataField, AlwaysPushInheritance]
     public ComponentRegistry? OnAdd;
 
     /// <summary>
     ///     When removed, the organ will ensure these components on the entity, and delete them on insertion.
     /// </summary>
-    [DataField]
+    [DataField, AlwaysPushInheritance]
     public ComponentRegistry? OnRemove;
 
     /// <summary>

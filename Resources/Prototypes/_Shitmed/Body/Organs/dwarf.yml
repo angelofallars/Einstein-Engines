@@ -1,0 +1,14 @@
+- type: entity
+  id: OrganDwarfTongue
+  parent: OrganHumanTongue
+  name: dwarf tongue
+  components:
+  - type: Organ
+    onAdd:
+    - type: SpeechModifier
+      speechSounds: Bass
+    - type: VocalModifier
+      sounds:
+        Male: UnisexDwarf
+        Female: FemaleDwarf
+        Unsexed: UnisexDwarf

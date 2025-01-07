@@ -47,12 +47,13 @@ namespace Content.Shared.Speech
                 return;
 
             component.OriginalSpeechSounds = speech.SpeechSounds;
-            if (component.SpeechSounds is {} speechSounds)
-                speech.SpeechSounds = speechSounds;
+            speech.SpeechSounds = component.SpeechSounds;
 
             component.OriginalSpeechVerb = speech.SpeechVerb;
-            if (component.SpeechVerb is {} speechVerb)
-                speech.SpeechVerb = speechVerb;
+            speech.SpeechVerb = component.SpeechVerb;
+
+            component.OriginalAllowedEmotes = speech.AllowedEmotes;
+            speech.AllowedEmotes = component.AllowedEmotes;
         }
 
         private void OnModifierShutdown(EntityUid uid, SpeechModifierComponent component, ComponentShutdown args)
@@ -64,6 +65,9 @@ namespace Content.Shared.Speech
 
             if (component.OriginalSpeechVerb is {} originalSpeechVerb)
                 speech.SpeechVerb = originalSpeechVerb;
+
+            if (component.OriginalAllowedEmotes is {} originalAllowedEmotes)
+                speech.AllowedEmotes = originalAllowedEmotes;
         }
         // Shitmed Change End
     }

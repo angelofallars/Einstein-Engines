@@ -1,0 +1,17 @@
+- type: entity
+  id: OrganVoxTongue
+  parent: OrganHumanTongue
+  name: vox tongue
+  components:
+  - type: Organ
+    onAdd:
+    - type: SpeechModifier
+      speechVerb: Vox
+      speechSounds: Vox
+    - type: VocalModifier
+      sounds:
+        Male: UnisexVox
+        Female: UnisexVox
+        Unsexed: UnisexVox
+    - type: TypingIndicatorModifier
+      proto: vox

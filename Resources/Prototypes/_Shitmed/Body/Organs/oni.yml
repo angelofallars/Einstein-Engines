@@ -1,0 +1,17 @@
+- type: entity
+  id: OrganOniTongue
+  parent: OrganHumanTongue
+  name: oni tongue
+  components:
+  - type: Organ
+    onAdd:
+    - type: SpeechModifier
+      speechSounds: Baritone
+      speechVerb: Oni
+    - type: VocalModifier
+      sounds:
+        Male: MaleHuman
+        Female: FemaleHuman
+        Unsexed: MaleHuman
+    - type: TypingIndicatorModifier
+      proto: oni

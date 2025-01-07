@@ -1,0 +1,18 @@
+- type: entity
+  id: OrganSlimeTongue
+  parent: OrganHumanTongue
+  name: slime tongue
+  components:
+  - type: Organ
+    onAdd:
+    - type: SpeechModifier
+      speechVerb: Slime
+      speechSounds: Slime
+      allowedEmotes: ['Squish']
+    - type: VocalModifier
+      sounds:
+        Male: MaleSlime
+        Female: FemaleSlime
+        Unsexed: MaleSlime
+    - type: TypingIndicatorModifier
+      proto: slime

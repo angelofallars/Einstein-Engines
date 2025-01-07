@@ -164,8 +164,21 @@
 - type: entity
   id: OrganArachnidTongue
   parent: [BaseArachnidOrgan, BaseOrganTongue] # Shitmed Change - inherit from BaseOrganTongue
-  name: tongue
+  name: arachnid tongue # Shitmed Change
   description: "A fleshy muscle mostly used for lying."
   components:
+  - type: Organ # Shitmed Change
+    onAdd:
+    - type: SpeechModifier
+      speechVerb: Arachnid
+      speechSounds: Arachnid
+      allowedEmotes: ['Click', 'Chitter']
+    - type: VocalModifier
+      sounds:
+        Male: UnisexArachnid
+        Female: UnisexArachnid
+        Unsexed: UnisexArachnid
+    - type: TypingIndicatorModifier
+      proto: spider
   - type: Sprite
     state: tongue

@@ -96,6 +96,16 @@
   components:
   - type: Organ # Shitmed Change
     slotId: tongue
+    onAdd:
+    - type: SpeechModifier
+      speechSounds: Alto
+    - type: VocalModifier
+      sounds:
+        Male: MaleHuman
+        Female: FemaleHuman
+        Unsexed: MaleHuman
+    - type: TypingIndicatorModifier
+      proto: default
     onRemove:
     - type: TonguelessAccent
     - type: SpeechModifier

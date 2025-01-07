@@ -1,0 +1,9 @@
+- type: entity
+  id: OrganArachneTongue
+  parent: OrganHumanTongue
+  name: arachne tongue
+  components:
+  - type: Organ
+    onAdd:
+    - type: SpeechModifier
+      speechSounds: Alto

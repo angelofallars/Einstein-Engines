@@ -1,0 +1,20 @@
+- type: entity
+  id: OrganHarpyTongue
+  parent: OrganHumanTongue
+  name: harpy tongue
+  components:
+  - type: Organ
+    onAdd:
+    - type: SpeechModifier
+      speechSounds: Harpy
+      speechVerb: Harpy
+    - type: VocalModifier
+      sounds:
+        Male: SoundsHarpy
+        Female: SoundsHarpy
+        Unsexed: SoundsHarpy
+    - type: Singer
+      proto: HarpySinger
+    # TODO: add/remove HarpyEmotes tag
+    # tagOnAdd:
+    # - HarpyEmotes

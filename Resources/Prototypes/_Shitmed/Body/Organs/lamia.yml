@@ -1,0 +1,9 @@
+- type: entity
+  id: OrganLamiaTongue
+  parent: OrganHumanTongue
+  name: lamia tongue
+  components:
+  - type: Organ
+    onAdd:
+    - type: SpeechModifier
+      speechSounds: Alto

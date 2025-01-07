@@ -27,14 +27,13 @@
       - id: Food
       - id: Drink
 
-- type: entity # Shitmed
+- type: entity # Shitmed Change
   id: OrganMothTongue
   parent: OrganHumanTongue
   name: tongue
   description: "A flezzzhy muzzzzcle mozzztly uzzzed for lying."
   components:
   - type: Organ
-    slotId: tongue
     onAdd:
     - type: MothAccent
     - type: ZombieAccentOverride

@@ -33,17 +33,10 @@
 
 - type: entity
   id: OrganIPCTongue
-  parent: BaseIPCOrgan
+  parent: [BaseIPCOrgan, BaseOrganTongue] # Shitmed Change - Inherit from BaseOrganTongue
   name: vocal modulator
   description: "A vocal modulator, used to produce speech."
   components:
-  - type: Organ # Shitmed
-    slotId: tongue
-    onRemove:
-    - type: TonguelessAccent
-    - type: SpeechModifier
-      speechVerb: Tongueless
-  - type: Tongue # Shitmed
   - type: Sprite
     state: tongue
 

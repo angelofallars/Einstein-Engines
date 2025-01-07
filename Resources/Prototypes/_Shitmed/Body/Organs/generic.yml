@@ -21,3 +21,14 @@
   id: BioSynthEyes
   name: bio-synthetic eyes
   description: These eyes can be transplanted into any living organism and it will adapt to its recipient.
+
+- type: entity
+  id: BaseOrganTongue
+  components:
+  - type: Organ
+    slotId: tongue
+    onRemove:
+    - type: TonguelessAccent
+    - type: SpeechModifier
+      speechVerb: Tongueless
+  - type: Tongue

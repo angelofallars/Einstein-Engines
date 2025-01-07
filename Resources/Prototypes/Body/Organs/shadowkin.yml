@@ -29,11 +29,6 @@
   id: OrganShadowkinTongue
   parent: OrganHumanTongue
   components:
-  - type: Organ # Shitmed Change
-    slotId: tongue
-    onRemove:
-      - type: TonguelessAccent
-  - type: Tongue # Shitmed Change
   - type: Sprite
     sprite: Mobs/Species/Shadowkin/organs.rsi
     state: tongue

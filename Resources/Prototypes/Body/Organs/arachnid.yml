@@ -163,14 +163,9 @@
 
 - type: entity
   id: OrganArachnidTongue
-  parent: BaseArachnidOrgan
+  parent: [BaseArachnidOrgan, BaseOrganTongue] # Shitmed Change - inherit from BaseOrganTongue
   name: tongue
   description: "A fleshy muscle mostly used for lying."
   components:
-  - type: Organ # Shitmed
-    slotId: tongue
-    onRemove:
-    - type: TonguelessAccent
-  - type: Tongue # Shitmed
   - type: Sprite
     state: tongue

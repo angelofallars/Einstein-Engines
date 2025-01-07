@@ -29,7 +29,6 @@
   description: "A flessshy mussscle mossstly usssed for lying."
   components:
   - type: Organ
-    slotId: tongue
     onAdd:
     - type: LizardAccent
     - type: SpeechModifier

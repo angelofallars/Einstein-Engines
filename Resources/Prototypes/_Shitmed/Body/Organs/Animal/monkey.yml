@@ -117,3 +117,26 @@
   - type: Sprite
     sprite: Mobs/Animals/monkey.rsi
     state: "r_foot"
+
+# Organs
+- type: entity
+  id: OrganMonkeyTongue
+  parent: [BaseAnimalOrgan, BaseOrganTongue]
+  name: monkey tongue
+  description: A fleshy muscle mostly used for OOH OOH AH AH'ing.
+  components:
+  - type: Organ
+    onAdd:
+    - type: SpeechModifier
+      speechSounds: Monkey
+      speechVerb: Monkey
+    - type: VocalModifier
+      sounds:
+        Male: Monkey
+        Female: Monkey
+        Unsexed: Monkey
+    - type: TypingIndicatorModifier
+      proto: default
+  - type: Sprite
+    sprite: Mobs/Species/Human/organs.rsi
+    state: tongue

@@ -1,0 +1,13 @@
+- type: emoteSounds
+  id: Monkey
+  params:
+    variation: 0.125
+  sounds:
+    Scream:
+      path: /Audio/Animals/monkey_scream.ogg
+    Laugh:
+      path: /Audio/Animals/monkey_scream.ogg
+    MonkeyScreeches:
+      collection: MonkeyScreeches
+    Crying:
+      path: /Audio/Animals/monkey_scream.ogg

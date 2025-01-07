@@ -117,3 +117,26 @@
   - type: Sprite
     sprite: Mobs/Animals/kobold.rsi
     state: "r_foot"
+
+# Organs
+- type: entity
+  id: OrganKoboldTongue
+  parent: [BaseAnimalOrgan, BaseOrganTongue]
+  name: kobold tongue
+  description: A fleshy muscle mostly used for hissing.
+  components:
+  - type: Organ
+    onAdd:
+    - type: SpeechModifier
+      speechSounds: Lizard
+      speechVerb: Reptilian
+    - type: VocalModifier
+      sounds:
+        Male: MaleReptilian
+        Female: FemaleReptilian
+        Unsexed: MaleReptilian
+    - type: TypingIndicatorModifier
+      proto: lizard
+  - type: Sprite
+    sprite: Mobs/Species/Human/organs.rsi
+    state: tongue

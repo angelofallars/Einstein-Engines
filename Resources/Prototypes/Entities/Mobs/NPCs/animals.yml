@@ -1349,6 +1349,7 @@
   - type: Body # Shitmed Change
     prototype: Monkey
     requiredLegs: 2
+  - type: Vocal # Shitmed Change
   - type: CreamPied
   - type: FireVisuals
     sprite: Mobs/Effects/onfire.rsi

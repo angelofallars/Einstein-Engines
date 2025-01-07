@@ -16,7 +16,7 @@
       connections:
       - hands
       - legs
-      - head
+      - head # Shitmed
       organs:
         lungs: OrganAnimalLungs
         stomach: OrganAnimalStomach

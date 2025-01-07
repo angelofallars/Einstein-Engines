@@ -18,6 +18,7 @@
   id: MobHarpySprites
   sprites:
     Head: MobHarpyHead
+    Face: MobHumanoidAnyMarking
     Hair: MobHumanoidAnyMarking
     FacialHair: MobHumanoidAnyMarking
     Snout: MobHumanoidAnyMarking
@@ -54,7 +55,7 @@
       required: true
       defaultMarkings: [ HarpyEarsDefault ]
     HeadSide:
-      points: 2
+      points: 3
       required: false
     Chest:
       points: 1

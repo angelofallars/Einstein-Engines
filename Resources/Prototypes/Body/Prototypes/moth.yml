@@ -1,6 +1,6 @@
 - type: body
   id: Moth
-  name: "Moth"
+  name: "moth"
   root: torso
   slots:
     head:
@@ -24,7 +24,7 @@
       - left arm
       - right leg
       - left leg
-      - head
+      - head # Shitmed
     right arm:
       part: RightArmMoth
       connections:

@@ -1,3 +1,4 @@
+using Content.Shared._Shitmed.Chat.TypnigIndicator; // Shitmed Change
 using Content.Shared.Clothing;
 
 namespace Content.Shared.Chat.TypingIndicator;
@@ -18,7 +19,35 @@ public abstract class SharedTypingIndicatorSystem : EntitySystem
         base.Initialize();
         SubscribeLocalEvent<TypingIndicatorClothingComponent, ClothingGotEquippedEvent>(OnGotEquipped);
         SubscribeLocalEvent<TypingIndicatorClothingComponent, ClothingGotUnequippedEvent>(OnGotUnequipped);
+
+        // Shitmed Change Start
+        SubscribeLocalEvent<TypingIndicatorModifierComponent, ComponentStartup>(OnModifierStartup);
+        SubscribeLocalEvent<TypingIndicatorModifierComponent, ComponentShutdown>(OnModifierShutdown);
+        // Shitmed Change End
     }
+
+    // Shitmed Change Start
+    private void OnModifierStartup(EntityUid uid, TypingIndicatorModifierComponent component, ComponentStartup args)
+    {
+        var indicator = TryComp<TypingIndicatorComponent>(uid, out var comp)
+            ? comp
+            : EnsureComp<TypingIndicatorComponent>(uid);
+
+        component.OriginalTypingIndicator = indicator.Prototype;
+
+        if (component.TypingIndicator != null)
+            indicator.Prototype = component.TypingIndicator;
+    }
+
+    private void OnModifierShutdown(EntityUid uid, TypingIndicatorModifierComponent component, ComponentShutdown args)
+    {
+        if (!TryComp<TypingIndicatorComponent>(uid, out var indicator) ||
+            String.IsNullOrEmpty(component.OriginalTypingIndicator))
+            return;
+
+        indicator.Prototype = component.OriginalTypingIndicator;
+    }
+    // Shitmed Change End
 
     private void OnGotEquipped(EntityUid uid, TypingIndicatorClothingComponent component, ClothingGotEquippedEvent args)
     {

@@ -16,7 +16,7 @@ public sealed partial class SpeechModifierSystem : EntitySystem
         base.Initialize();
 
         SubscribeLocalEvent<SpeechModifierComponent, ComponentStartup>(OnStartup);
-        SubscribeLocalEvent<SpeechModifierComponent, ComponentRemove>(OnRemove);
+        SubscribeLocalEvent<SpeechModifierComponent, ComponentShutdown>(OnShutdown);
     }
 
     private void OnStartup(EntityUid uid, SpeechModifierComponent component, ComponentStartup args)
@@ -24,48 +24,25 @@ public sealed partial class SpeechModifierSystem : EntitySystem
         if (!_timing.IsFirstTimePredicted)
             return;
 
-        if (TryComp<SpeechComponent>(uid, out var speech))
-        {
-            component.OriginalSpeechSounds = speech.SpeechSounds;
-            component.OriginalSpeechVerb = speech.SpeechVerb;
+        if (!TryComp<SpeechComponent>(uid, out var speech))
+            return;
 
-            if (component.SpeechSounds is {} speechSounds)
-            {
-                speech.SpeechSounds = speechSounds;
-            }
+        component.OriginalSpeechSounds = speech.SpeechSounds;
+        if (component.SpeechSounds is {} speechSounds)
+            speech.SpeechSounds = speechSounds;
 
-            if (component.SpeechVerb is {} speechVerb)
-            {
-                speech.SpeechVerb = speechVerb;
-            }
-        }
-
-        var typing = TryComp<TypingIndicatorComponent>(uid, out var comp)
-            ? comp
-            : EnsureComp<TypingIndicatorComponent>(uid);
-
-        component.OriginalTypingIndicator = typing.Prototype;
-
-        typing.Prototype = component.TypingIndicator ?? typing.Prototype;
-        Dirty(uid, typing);
+        component.OriginalSpeechVerb = speech.SpeechVerb;
+        if (component.SpeechVerb is {} speechVerb)
+            speech.SpeechVerb = speechVerb;
     }
 
-    private void OnRemove(EntityUid uid, SpeechModifierComponent component, ComponentRemove args)
+    private void OnShutdown(EntityUid uid, SpeechModifierComponent component, ComponentShutdown args)
     {
-        if (TryComp<SpeechComponent>(uid, out var speech))
-        {
-            speech.SpeechSounds = component.OriginalSpeechSounds;
+        if (!TryComp<SpeechComponent>(uid, out var speech))
+            return;
 
-            if (component.OriginalSpeechVerb is {} originalSpeechVerb)
-                speech.SpeechVerb = originalSpeechVerb;
-        }
-
-
-        if (TryComp<TypingIndicatorComponent>(uid, out var typing) &&
-            component.OriginalTypingIndicator is string originalTypingPrototype)
-        {
-            typing.Prototype = originalTypingPrototype;
-            Dirty(uid, typing);
-        }
+        speech.SpeechSounds = component.OriginalSpeechSounds;
+        if (component.OriginalSpeechVerb is {} originalSpeechVerb)
+            speech.SpeechVerb = originalSpeechVerb;
     }
 }

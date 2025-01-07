@@ -41,4 +41,5 @@
       accent: zombieMoth
     - type: SpeechModifier
       speechVerb: Moth
-      typingIndicator: moth
+    - type: TypingIndicatorModifier
+      proto: moth

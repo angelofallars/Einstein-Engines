@@ -34,10 +34,10 @@ public sealed class VocalSystem : EntitySystem
         SubscribeLocalEvent<VocalComponent, ComponentShutdown>(OnShutdown);
         SubscribeLocalEvent<VocalComponent, SexChangedEvent>(OnSexChanged);
 
-        // Start Shitmed Change
-        SubscribeLocalEvent<VocalModifierComponent, ComponentInit>(OnVocalModifierInit);
-        SubscribeLocalEvent<VocalModifierComponent, ComponentShutdown>(OnVocalModifierShutdown);
-        // End Shitmed Change
+        // Shitmed Change Start
+        SubscribeLocalEvent<VocalModifierComponent, ComponentStartup>(OnModifierStartup);
+        SubscribeLocalEvent<VocalModifierComponent, ComponentShutdown>(OnModifierShutdown);
+        // Shitmed Change End
 
         SubscribeLocalEvent<VocalComponent, EmoteEvent>(OnEmote);
         SubscribeLocalEvent<VocalComponent, ScreamActionEvent>(OnScreamAction);
@@ -64,8 +64,8 @@ public sealed class VocalSystem : EntitySystem
         LoadSounds(uid, component);
     }
 
-    // Start Shitmed Change
-    private void OnVocalModifierInit(EntityUid uid, VocalModifierComponent component, ComponentInit args)
+    // Shitmed Change Start
+    private void OnModifierStartup(EntityUid uid, VocalModifierComponent component, ComponentStartup args)
     {
         if (!TryComp<VocalComponent>(uid, out var vocal))
             return;
@@ -85,7 +85,7 @@ public sealed class VocalSystem : EntitySystem
         LoadSounds(uid, vocal);
     }
 
-    private void OnVocalModifierShutdown(EntityUid uid, VocalModifierComponent component, ComponentShutdown args)
+    private void OnModifierShutdown(EntityUid uid, VocalModifierComponent component, ComponentShutdown args)
     {
         if (!TryComp<VocalComponent>(uid, out var vocal))
             return;
@@ -100,7 +100,7 @@ public sealed class VocalSystem : EntitySystem
 
         LoadSounds(uid, vocal);
     }
-    // End Shitmed Change
+    // Shitmed Change End
 
     private void OnEmote(EntityUid uid, VocalComponent component, ref EmoteEvent args)
     {

@@ -1,12 +1,22 @@
+using Content.Shared._Shitmed.Speech.Components; // Shitmed Change
+using Robust.Shared.Timing; // Shitmed Change
+
 namespace Content.Shared.Speech
 {
     public sealed class SpeechSystem : EntitySystem
     {
+        [Dependency] private readonly IGameTiming _timing = default!; // Shitmed Change
+
         public override void Initialize()
         {
             base.Initialize();
 
             SubscribeLocalEvent<SpeakAttemptEvent>(OnSpeakAttempt);
+
+            // Shitmed Change Start
+            SubscribeLocalEvent<SpeechModifierComponent, ComponentStartup>(OnModifierStartup);
+            SubscribeLocalEvent<SpeechModifierComponent, ComponentShutdown>(OnModifierShutdown);
+            // Shitmed Change End
         }
 
         public void SetSpeech(EntityUid uid, bool value, SpeechComponent? component = null)
@@ -29,5 +39,32 @@ namespace Content.Shared.Speech
             if (!TryComp(args.Uid, out SpeechComponent? speech) || !speech.Enabled)
                 args.Cancel();
         }
+
+        // Shitmed Change Start
+        private void OnModifierStartup(EntityUid uid, SpeechModifierComponent component, ComponentStartup args)
+        {
+            if (!_timing.IsFirstTimePredicted || !TryComp<SpeechComponent>(uid, out var speech))
+                return;
+
+            component.OriginalSpeechSounds = speech.SpeechSounds;
+            if (component.SpeechSounds is {} speechSounds)
+                speech.SpeechSounds = speechSounds;
+
+            component.OriginalSpeechVerb = speech.SpeechVerb;
+            if (component.SpeechVerb is {} speechVerb)
+                speech.SpeechVerb = speechVerb;
+        }
+
+        private void OnModifierShutdown(EntityUid uid, SpeechModifierComponent component, ComponentShutdown args)
+        {
+            if (!TryComp<SpeechComponent>(uid, out var speech))
+                return;
+
+            speech.SpeechSounds = component.OriginalSpeechSounds;
+
+            if (component.OriginalSpeechVerb is {} originalSpeechVerb)
+                speech.SpeechVerb = originalSpeechVerb;
+        }
+        // Shitmed Change End
     }
 }

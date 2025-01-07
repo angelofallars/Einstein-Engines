@@ -29,9 +29,7 @@ public abstract class SharedTypingIndicatorSystem : EntitySystem
     // Shitmed Change Start
     private void OnModifierStartup(EntityUid uid, TypingIndicatorModifierComponent component, ComponentStartup args)
     {
-        var indicator = TryComp<TypingIndicatorComponent>(uid, out var comp)
-            ? comp
-            : EnsureComp<TypingIndicatorComponent>(uid);
+        var indicator = EnsureComp<TypingIndicatorComponent>(uid);
 
         component.OriginalTypingIndicator = indicator.Prototype;
 

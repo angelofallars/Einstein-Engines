@@ -1,0 +1,15 @@
+- type: entity
+  id: OrganMothTongue
+  parent: OrganHumanTongue
+  name: tongue
+  description: "A flezzzhy muzzzzcle mozzztly uzzzed for lying."
+  components:
+  - type: Organ
+    onAdd:
+    - type: MothAccent
+    - type: ZombieAccentOverride
+      accent: zombieMoth
+    - type: SpeechModifier
+      speechVerb: Moth
+    - type: TypingIndicatorModifier
+      proto: moth

@@ -10,7 +10,7 @@
       organs:
         brain: OrganHumanBrain
         eyes: OrganArachnidEyes
-        tongue: OrganArachnidTongue
+        tongue: OrganArachnidTongue # Shitmed Change
     torso:
       part: TorsoArachnid
       organs:

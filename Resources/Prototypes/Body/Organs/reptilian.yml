@@ -36,3 +36,8 @@
       speechSounds: Lizard
       speechVerb: Reptilian
       typingIndicator: lizard
+    - type: VocalModifier
+      sounds:
+        Male: MaleReptilian
+        Female: FemaleReptilian
+        Unsexed: MaleReptilian

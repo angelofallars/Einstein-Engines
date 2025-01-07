@@ -32,6 +32,12 @@ public sealed class VocalSystem : EntitySystem
         SubscribeLocalEvent<VocalComponent, MapInitEvent>(OnMapInit);
         SubscribeLocalEvent<VocalComponent, ComponentShutdown>(OnShutdown);
         SubscribeLocalEvent<VocalComponent, SexChangedEvent>(OnSexChanged);
+
+        // Start Shitmed Change
+        SubscribeLocalEvent<VocalModifierComponent, ComponentInit>(OnVocalModifierInit);
+        SubscribeLocalEvent<VocalModifierComponent, ComponentShutdown>(OnVocalModifierShutdown);
+        // End Shitmed Change
+
         SubscribeLocalEvent<VocalComponent, EmoteEvent>(OnEmote);
         SubscribeLocalEvent<VocalComponent, ScreamActionEvent>(OnScreamAction);
     }
@@ -56,6 +62,44 @@ public sealed class VocalSystem : EntitySystem
     {
         LoadSounds(uid, component);
     }
+
+    // Start Shitmed Change
+    private void OnVocalModifierInit(EntityUid uid, VocalModifierComponent component, ComponentInit args)
+    {
+        if (!TryComp<VocalComponent>(uid, out var vocal))
+            return;
+
+        component.OriginalSounds = vocal.Sounds;
+        if (component.Sounds is {} sounds)
+            vocal.Sounds = sounds;
+
+        component.OriginalWilhelm = vocal.Wilhelm;
+        if (component.Wilhelm is {} wilhelm)
+            vocal.Wilhelm = wilhelm;
+
+        component.OriginalWilhelmProbability = vocal.WilhelmProbability;
+        if (component.WilhelmProbability is {} wilhelmProbability)
+            vocal.WilhelmProbability = wilhelmProbability;
+
+        LoadSounds(uid, vocal);
+    }
+
+    private void OnVocalModifierShutdown(EntityUid uid, VocalModifierComponent component, ComponentShutdown args)
+    {
+        if (!TryComp<VocalComponent>(uid, out var vocal))
+            return;
+
+        vocal.Sounds = component.OriginalSounds;
+
+        if (component.OriginalWilhelm is {} originalWilhelm)
+            vocal.Wilhelm = originalWilhelm;
+
+        if (component.OriginalWilhelmProbability is {} originalWilhelmProbability)
+            vocal.WilhelmProbability = originalWilhelmProbability;
+
+        LoadSounds(uid, vocal);
+    }
+    // End Shitmed Change
 
     private void OnEmote(EntityUid uid, VocalComponent component, ref EmoteEvent args)
     {

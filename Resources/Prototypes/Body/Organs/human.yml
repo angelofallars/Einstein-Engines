@@ -73,7 +73,7 @@
     entries:
       Burger: Brain
       Taco: Brain
-  
+
 - type: entity
   id: OrganHumanEyes
   parent: BaseHumanOrgan
@@ -94,13 +94,13 @@
   name: tongue
   description: "A fleshy muscle mostly used for lying."
   components:
-  - type: Organ
+  - type: Organ # Shitmed Change
     slotId: tongue
     onRemove:
     - type: TonguelessAccent
     - type: SpeechModifier
       speechVerb: Tongueless
-  - type: Tongue
+  - type: Tongue # Shitmed Change
   - type: Sprite
     state: tongue
 

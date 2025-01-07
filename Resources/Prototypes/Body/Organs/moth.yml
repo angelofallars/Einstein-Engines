@@ -27,7 +27,7 @@
       - id: Food
       - id: Drink
 
-- type: entity
+- type: entity # Shitmed
   id: OrganMothTongue
   parent: OrganHumanTongue
   name: tongue

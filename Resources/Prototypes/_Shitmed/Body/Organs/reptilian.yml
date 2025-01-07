@@ -19,3 +19,6 @@
     - type: LizardAccent
     tagOnAdd: # Einstein Engines
     - UnathiEmotes
+  - type: Sprite
+    sprite: _Shitmed/Mobs/Species/Reptilian/organs.rsi
+    state: tongue

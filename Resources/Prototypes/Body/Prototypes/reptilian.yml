@@ -10,7 +10,7 @@
       organs:
         brain: OrganHumanBrain
         eyes: OrganHumanEyes
-        tongue: OrganReptilianTongue
+        tongue: OrganReptilianTongue # Shitmed Change
     torso:
       part: TorsoReptilian
       organs:

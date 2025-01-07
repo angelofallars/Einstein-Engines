@@ -167,10 +167,10 @@
   name: tongue
   description: "A fleshy muscle mostly used for lying."
   components:
-  - type: Organ
+  - type: Organ # Shitmed
     slotId: tongue
     onRemove:
     - type: TonguelessAccent
-  - type: Tongue
+  - type: Tongue # Shitmed
   - type: Sprite
     state: tongue

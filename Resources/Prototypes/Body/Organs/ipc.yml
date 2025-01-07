@@ -37,13 +37,13 @@
   name: vocal modulator
   description: "A vocal modulator, used to produce speech."
   components:
-  - type: Organ
+  - type: Organ # Shitmed
     slotId: tongue
     onRemove:
     - type: TonguelessAccent
     - type: SpeechModifier
       speechVerb: Tongueless
-  - type: Tongue
+  - type: Tongue # Shitmed
   - type: Sprite
     state: tongue
 

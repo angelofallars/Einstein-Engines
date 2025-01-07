@@ -10,7 +10,7 @@
       organs:
         brain: OrganShadowkinBrain
         eyes: OrganShadowkinEyes
-        tongue: OrganShadowkinTongue
+        tongue: OrganShadowkinTongue # Shitmed Change
     torso:
       part: TorsoShadowkin
       connections:

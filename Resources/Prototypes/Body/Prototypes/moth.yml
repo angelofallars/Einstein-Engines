@@ -10,7 +10,7 @@
       organs:
         brain: OrganHumanBrain
         eyes: OrganHumanEyes
-        tongue: OrganMothTongue
+        tongue: OrganMothTongue # Shitmed Change
     torso:
       part: TorsoMoth
       organs:

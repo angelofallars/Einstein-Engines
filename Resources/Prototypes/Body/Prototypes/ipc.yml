@@ -9,7 +9,7 @@
       - torso
       organs:
         eyes: OrganIPCEyes
-        tongue: OrganIPCTongue
+        tongue: OrganIPCTongue # Shitmed Change
     torso:
       part: TorsoIPC
       connections:

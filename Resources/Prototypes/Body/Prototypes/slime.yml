@@ -8,7 +8,7 @@
       connections:
       - torso
       organs:
-        tongue: OrganHumanTongue
+        tongue: OrganHumanTongue # Shitmed Change
     torso:
       part: TorsoSlime
       connections:

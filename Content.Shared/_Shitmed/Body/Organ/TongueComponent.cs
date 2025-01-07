@@ -1,6 +1,6 @@
 using Robust.Shared.GameStates;
 
-namespace Content.Shared.Body.Organ;
+namespace Content.Shared._Shitmed.Body.Organ;
 
 [RegisterComponent]
 public sealed partial class TongueComponent : Component;

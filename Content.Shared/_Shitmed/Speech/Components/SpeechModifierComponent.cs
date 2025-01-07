@@ -1,11 +1,12 @@
 using Content.Shared.Chat.Prototypes;
 using Content.Shared.Chat.TypingIndicator;
+using Content.Shared.Speech;
 using Robust.Shared.Audio;
 using Robust.Shared.GameStates;
 using Robust.Shared.Prototypes;
 using Robust.Shared.Serialization.TypeSerializers.Implementations.Custom.Prototype;
 
-namespace Content.Shared.Speech;
+namespace Content.Shared._Shitmed.Speech.Components;
 
 /// <summary>
 ///     Component to modify SpeechComponent.

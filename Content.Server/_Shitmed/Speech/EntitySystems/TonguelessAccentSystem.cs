@@ -1,7 +1,8 @@
 using System.Text.RegularExpressions;
-using Content.Server.Speech.Components;
+using Content.Server._Shitmed.Speech.Components;
+using Content.Server.Speech;
 
-namespace Content.Server.Speech.EntitySystems;
+namespace Content.Server._Shitmed.Speech.EntitySystems;
 
 public sealed class TonguelessAccentSystem : EntitySystem
 {

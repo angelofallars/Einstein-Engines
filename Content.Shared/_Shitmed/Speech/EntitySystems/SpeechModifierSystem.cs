@@ -1,9 +1,10 @@
+using Content.Shared._Shitmed.Speech.Components;
 using Content.Shared.Chat.TypingIndicator;
 using Content.Shared.Speech;
 using Content.Shared.Popups;
 using Robust.Shared.Timing;
 
-namespace Content.Shared.Speech.EntitySystems;
+namespace Content.Shared._Shitmed.Speech.EntitySystems;
 
 public sealed partial class SpeechModifierSystem : EntitySystem
 {

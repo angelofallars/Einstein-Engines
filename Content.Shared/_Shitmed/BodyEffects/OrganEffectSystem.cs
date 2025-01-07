@@ -52,17 +52,18 @@ public partial class OrganEffectSystem : EntitySystem
 
         if (ev.Add)
         {
-            if (ev.Add)
-                AddComponents(ev.Body, organEnt, organEnt.Comp.OnAdd);
-            else
-                RemoveComponents(ev.Body, organEnt, organEnt.Comp.OnAdd);
-        }
-
-        if (organEnt.Comp.OnRemove != null)
-        {
-            if (ev.Add)
+            if (organEnt.Comp.OnRemove != null)
                 RemoveComponents(ev.Body, organEnt, organEnt.Comp.OnRemove);
-            else
+
+            if (organEnt.Comp.OnAdd != null)
+                AddComponents(ev.Body, organEnt, organEnt.Comp.OnAdd);
+        }
+        else
+        {
+            if (organEnt.Comp.OnAdd != null)
+                RemoveComponents(ev.Body, organEnt, organEnt.Comp.OnAdd);
+
+            if (organEnt.Comp.OnRemove != null)
                 AddComponents(ev.Body, organEnt, organEnt.Comp.OnRemove);
         }
     }

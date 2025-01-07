@@ -1,6 +1,7 @@
 using Content.Server.Actions;
 using Content.Server.Chat.Systems;
 using Content.Server.Speech.Components;
+using Content.Shared._Shitmed.Speech.Components; // Shitmed Change
 using Content.Shared.ActionBlocker;
 using Content.Shared.Chat.Prototypes;
 using Content.Shared.Humanoid;

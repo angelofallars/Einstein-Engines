@@ -1,4 +1,4 @@
-﻿- type: entity
+- type: entity
   parent: BaseMobSpeciesOrganic
   id: BaseMobVox
   abstract: true
@@ -102,6 +102,10 @@
     - map: [ "clownedon" ]
       sprite: "Effects/creampie.rsi"
       state: "creampie_vox" # Not default
+      visible: false
+    - map: [ "singingLayer" ] # Shitmed Change
+      sprite: Effects/harpysinger.rsi
+      state: singing_music_notes
       visible: false
   - type: FootPrints
     leftBarePrint: "footprint-left-bare-lizard"

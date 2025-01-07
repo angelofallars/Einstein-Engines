@@ -197,6 +197,10 @@
         - map: ["pocket1"]
         - map: ["pocket2"]
         - map: ["enum.HumanoidVisualLayers.Tail"]
+        - map: [ "singingLayer" ] # Shitmed Change
+          sprite: Effects/harpysinger.rsi
+          state: singing_music_notes
+          visible: false
     - type: MeleeWeapon
       soundHit:
         collection: AlienClaw

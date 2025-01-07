@@ -84,6 +84,10 @@
       sprite: "Effects/creampie.rsi"
       state: "creampie_human"
       visible: false
+    - map: [ "singingLayer" ] # Shitmed Change
+      sprite: Effects/harpysinger.rsi
+      state: singing_music_notes
+      visible: false
   - type: HumanoidAppearance
     species: Arachne
   - type: Fixtures

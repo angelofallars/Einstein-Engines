@@ -1336,6 +1336,10 @@
     - map: [ "head" ]
     - map: [ "pocket1" ]
     - map: [ "pocket2" ]
+    - map: [ "singingLayer" ]
+      sprite: Effects/harpysinger.rsi
+      state: singing_music_notes
+      visible: false
     # Shitmed Change End
   - type: Carriable
   - type: Hands
@@ -1346,6 +1350,10 @@
         clownedon:
           True: {visible: true}
           False: {visible: false}
+      enum.HarpyVisualLayers.Singing: # Shitmed Change
+        singingLayer:
+          False:  {visible: false}
+          True:  {visible: true}
   - type: Body # Shitmed Change
     prototype: Monkey
     requiredLegs: 2

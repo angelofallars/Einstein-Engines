@@ -123,6 +123,10 @@
         sprite: "Effects/creampie.rsi"
         state: "creampie_moth"
         visible: false
+      - map: [ "singingLayer" ] # Shitmed Change
+        sprite: Effects/harpysinger.rsi
+        state: singing_music_notes
+        visible: false
   - type: FootPrints
 
 - type: entity

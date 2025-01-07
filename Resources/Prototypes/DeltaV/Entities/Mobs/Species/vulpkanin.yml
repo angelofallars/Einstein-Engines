@@ -78,6 +78,10 @@
         sprite: "DeltaV/Effects/creampie.rsi"
         state: "creampie_vulpkanin"
         visible: false
+      - map: [ "singingLayer" ] # Shitmed Change
+        sprite: Effects/harpysinger.rsi
+        state: singing_music_notes
+        visible: false
   - type: MeleeWeapon
     hidden: true
     soundHit:

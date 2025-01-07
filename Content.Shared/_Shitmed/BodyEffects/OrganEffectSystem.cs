@@ -2,6 +2,7 @@
 // will delete or refactor as time goes on.
 using Content.Shared._Shitmed.Body.Organ;
 using Content.Shared.Body.Organ;
+using Content.Shared.Tag;
 using Robust.Shared.Prototypes;
 using Robust.Shared.Serialization.Manager;
 using Robust.Shared.Timing;
@@ -16,6 +17,8 @@ public partial class OrganEffectSystem : EntitySystem
     [Dependency] private readonly ISerializationManager _serManager = default!;
     [Dependency] private readonly IGameTiming _gameTiming = default!;
     [Dependency] private readonly INetManager _net = default!;
+    [Dependency] private readonly TagSystem _tag = default!;
+
     public override void Initialize()
     {
         base.Initialize();
@@ -57,6 +60,12 @@ public partial class OrganEffectSystem : EntitySystem
 
             if (organEnt.Comp.OnAdd != null)
                 AddComponents(ev.Body, organEnt, organEnt.Comp.OnAdd);
+
+            if (organEnt.Comp.TagsOnRemove != null)
+                _tag.RemoveTags(ev.Body, organEnt.Comp.TagsOnRemove);
+
+            if (organEnt.Comp.TagsOnAdd != null)
+                _tag.AddTags(ev.Body, organEnt.Comp.TagsOnAdd);
         }
         else
         {
@@ -65,6 +74,12 @@ public partial class OrganEffectSystem : EntitySystem
 
             if (organEnt.Comp.OnRemove != null)
                 AddComponents(ev.Body, organEnt, organEnt.Comp.OnRemove);
+
+            if (organEnt.Comp.TagsOnAdd != null)
+                _tag.RemoveTags(ev.Body, organEnt.Comp.TagsOnAdd);
+
+            if (organEnt.Comp.TagsOnRemove != null)
+                _tag.AddTags(ev.Body, organEnt.Comp.TagsOnRemove);
         }
     }
 

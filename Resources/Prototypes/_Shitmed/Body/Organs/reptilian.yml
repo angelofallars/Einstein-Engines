@@ -17,3 +17,5 @@
     - type: TypingIndicatorModifier
       proto: lizard
     - type: LizardAccent
+    tagOnAdd: # Einstein Engines
+    - UnathiEmotes

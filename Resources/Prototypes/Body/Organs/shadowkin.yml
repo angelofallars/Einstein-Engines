@@ -41,6 +41,8 @@
         Unsexed: MaleShadowkin
     - type: TypingIndicatorModifier
       proto: alien
+    tagOnAdd:
+    - ShadowkinEmotes
   - type: Sprite
     sprite: Mobs/Species/Shadowkin/organs.rsi
     state: tongue

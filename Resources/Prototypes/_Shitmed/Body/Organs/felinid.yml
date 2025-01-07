@@ -17,9 +17,8 @@
         Unsexed: MaleFelinid
     - type: TypingIndicatorModifier
       proto: felinid
-    # TODO: add/remove FelinidEmotes tag
-    # tagOnAdd:
-    # - FelinidEmotes
+    tagOnAdd:
+    - FelinidEmotes
 
 - type: entity
   id: OrganFelinidEars

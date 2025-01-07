@@ -49,6 +49,8 @@
         Unsexed: UnisexIPC
     - type: TypingIndicatorModifier
       proto: robot
+    tagOnAdd:
+    - SiliconEmotes
   - type: Sprite
     state: tongue
 

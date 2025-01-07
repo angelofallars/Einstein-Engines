@@ -13,3 +13,5 @@
         Male: MaleVulpkanin
         Female: FemaleVulpkanin
         Unsexed: MaleVulpkanin
+    tagOnAdd:
+    - VulpEmotes

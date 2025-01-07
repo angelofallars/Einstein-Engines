@@ -1,4 +1,5 @@
 using Content.Shared.Body.Systems;
+using Content.Shared.Tag;
 using Robust.Shared.GameStates;
 using Robust.Shared.Prototypes; // Shitmed Change
 using Content.Shared._Shitmed.Medical.Surgery; // Shitmed Change
@@ -56,6 +57,18 @@ public sealed partial class OrganComponent : Component, ISurgeryToolComponent //
     /// </summary>
     [DataField, AlwaysPushInheritance]
     public ComponentRegistry? OnRemove;
+
+    /// <summary>
+    ///     When attached, the organ will add these tags on the entity, and delete them on removal.
+    /// </summary>
+    [DataField("tagOnAdd"), AlwaysPushInheritance]
+    public HashSet<ProtoId<TagPrototype>>? TagsOnAdd;
+
+    /// <summary>
+    ///     When attached, the organ will add these tags on the entity, and delete them on removal.
+    /// </summary>
+    [DataField("tagOnRemove"), AlwaysPushInheritance]
+    public HashSet<ProtoId<TagPrototype>>? TagsOnRemove;
 
     /// <summary>
     ///     Is this organ working or not?

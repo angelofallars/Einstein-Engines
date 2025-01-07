@@ -15,6 +15,5 @@
         Unsexed: SoundsHarpy
     - type: Singer
       proto: HarpySinger
-    # TODO: add/remove HarpyEmotes tag
-    # tagOnAdd:
-    # - HarpyEmotes
+    tagOnAdd:
+    - HarpyEmotes

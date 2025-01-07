@@ -1,4 +1,4 @@
-- type: entity
+﻿- type: entity
   id: OrganMothStomach
   name: moth stomach
   parent: [OrganAnimalStomach, OrganHumanStomach]

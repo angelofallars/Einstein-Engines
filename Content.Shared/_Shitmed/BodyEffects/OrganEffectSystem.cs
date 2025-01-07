@@ -55,6 +55,9 @@ public partial class OrganEffectSystem : EntitySystem
 
         if (ev.Add)
         {
+            // Always remove components from the other field first
+            // before adding components to avoid conflicts when both
+            // add the same component
             if (organEnt.Comp.OnRemove != null)
                 RemoveComponents(ev.Body, organEnt, organEnt.Comp.OnRemove);
 

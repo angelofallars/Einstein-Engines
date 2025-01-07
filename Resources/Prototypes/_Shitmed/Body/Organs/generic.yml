@@ -24,6 +24,7 @@
 
 - type: entity
   id: BaseOrganTongue
+  abstract: true
   components:
   - type: Organ
     slotId: tongue

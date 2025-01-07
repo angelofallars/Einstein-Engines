@@ -1,6 +1,6 @@
 - type: speechSounds
   id: Tongueless
-  variation: 0.125
+  variation: 0.250
   saySound:
     collection: TonguelessTalk
   askSound:

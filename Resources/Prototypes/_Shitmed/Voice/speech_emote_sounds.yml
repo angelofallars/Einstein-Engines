@@ -15,7 +15,7 @@
 - type: emoteSounds
   id: Tongueless
   params:
-    variation: 0.125
+    variation: 0.250
   sounds:
     Scream:
       collection: TonguelessTalk

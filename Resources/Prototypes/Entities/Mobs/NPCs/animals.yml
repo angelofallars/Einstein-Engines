@@ -1294,6 +1294,9 @@
     interfaces:
       enum.StrippingUiKey.Key:
         type: StrippableBoundUserInterface
+      enum.InstrumentUiKey.Key: # Shitmed Change
+        type: InstrumentBoundUserInterface
+        requireInputValidation: false
       enum.SurgeryUIKey.Key:
         type: SurgeryBui
   - type: Sprite

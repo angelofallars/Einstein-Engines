@@ -6,7 +6,7 @@
   requirements:
     - !type:CharacterOverallTimeRequirement
       min: 18000
-    - !type:DepartmentTimeRequirement
+    - !type:CharacterDepartmentTimeRequirement
       department: Epistemics # DeltaV - Epistemics Department replacing Science
       min: 3600
     - !type:CharacterLogicOrRequirement
@@ -39,9 +39,12 @@
       powersToAdd:
         - MetapsionicPower
         - TelepathyPower
+        - AssayPower
 
 - type: startingGear
   id: ForensicMantisGear
+  subGear:
+  - ForensicMantisPlasmamanGear
   equipment:
     jumpsuit: ClothingUniformJumpsuitMantis
     back: ClothingBackpackMantisFilled
@@ -53,7 +56,15 @@
     gloves: ClothingHandsGlovesColorWhite
     outerClothing: ClothingOuterCoatMantis
     belt: ClothingBeltMantis
-    # pocket2: ForensicScanner # DeltaV - Mantis is no longer a Detective
+    pocket1: BookPsionicsGuidebook
   innerClothingSkirt: ClothingUniformSkirtMantis
   satchel: ClothingBackpackSatchelMantisFilled
   duffelbag: ClothingBackpackDuffelMantisFilled
+
+- type: startingGear
+  id: ForensicMantisPlasmamanGear
+  parent: BasePlasmamanGear
+  equipment:
+    jumpsuit: ClothingUniformEnvirosuitMantis
+    head: ClothingHeadEnvirohelmMantis
+    gloves: ClothingHandsGlovesEnviroglovesWhite

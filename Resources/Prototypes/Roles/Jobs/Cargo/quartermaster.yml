@@ -18,7 +18,7 @@
       department: Logistics # DeltaV - Logistics Department replacing Cargo
       min: 43200 #DeltaV 12 hours
     - !type:CharacterOverallTimeRequirement
-      min: 144000 #40 hrs
+      min: 108000 # 30 hours
   weight: 10
   startingGear: QuartermasterGear
   icon: "JobIconQuarterMaster"
@@ -40,9 +40,14 @@
   - !type:AddComponentSpecial
     components:
       - type: CommandStaff
+  afterLoadoutSpecial:
+  - !type:ModifyEnvirosuitSpecial
+    charges: 8
 
 - type: startingGear
   id: QuartermasterGear
+  subGear:
+  - QuartermasterPlasmamanGear
   equipment:
     head: ClothingHeadHatBeretLogi
     jumpsuit: ClothingUniformJumpsuitQM
@@ -55,3 +60,11 @@
   innerClothingSkirt: ClothingUniformJumpskirtQM
   satchel: ClothingBackpackSatchelQuartermasterFilled
   duffelbag: ClothingBackpackDuffelQuartermasterFilled
+
+- type: startingGear
+  id: QuartermasterPlasmamanGear
+  parent: BasePlasmamanGear
+  equipment:
+    jumpsuit: ClothingUniformEnvirosuitQM
+    head: ClothingHeadEnvirohelmQM
+    gloves: ClothingHandsGlovesEnviroglovesCargo
